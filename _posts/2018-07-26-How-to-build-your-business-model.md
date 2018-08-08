@@ -17,7 +17,7 @@ A business model is essentially a framework or a blueprint that describes all th
 
 A business model should always be pitched in a narrative form telling the story of your company and it's mission emphasizing on the value you provide and the how it can generate revenue, But since the human brain works better with visuals, a great tool called the business model canvas was proposed by **Alexander Osterwalder** based on his earlier book: *Business Model Ontology*.  
 
-![business model canvas](http://192.168.1.254:4000/img/posts/2018-07-26-How-to-build-your-business-model/BUSINESS-MODEL-CANVAS.png)
+![business model canvas](https://github.com/haniMerzouki/haniMerzouki.github.io/blob/master/img/posts/2018-07-26-How-to-build-your-business-model/BUSINESS-MODEL-CANVAS.png)
 <p style="text-align: center"><strong>Figure 1 : business model canvas</strong></p>
 
 
