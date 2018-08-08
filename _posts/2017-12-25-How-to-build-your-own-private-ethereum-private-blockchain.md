@@ -12,7 +12,7 @@ During the last months ethereum has became the first platform of choice for new 
 ### Topology
 for this first part, we will have only one node doing all the mining and the block generation, we will have a second terminal connect to the geth node as a console to issue commands, and we will run MIST for visualization and contract deployment
 
-![topology](https://github.com/haniMerzouki/haniMerzouki.github.io/blob/master/img/posts/2017-12-25-How-to-build-your-own-private-ethereum-private-blockchain/topology.png)
+![topology](/img/posts/2017-12-25-How-to-build-your-own-private-ethereum-private-blockchain/topology.png)
 <p style="text-align: center">Figure 1 : process topology</p>
 
 ### Setting up
