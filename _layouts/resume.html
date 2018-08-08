@@ -1,0 +1,109 @@
+
+<!-- Blog Layout Start -->
+
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+
+  {% include head.html %}
+
+  <body>
+
+    {% include navigation.html %}
+
+    <section id="page" class="container content-section">
+
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+          
+          <div class="resume-title text-center">{{ page.content | markdownify }}</div>
+          <h1 class="brand-heading">&nbsp;</h1>
+
+          <h2 align="left" class="resume-title"><span class="fa fa-graduation-cap"></span> Education</h2>
+          <div align="left" class="col-md-offset-1 col-xs-offset-1 resume-content">
+              <strong class="resume-duration">September 2014 – June 2016</strong>&nbsp;&nbsp;
+              <span class="resume-keyword">Masters Degree</span>  in Networking and Distributed systems. 
+              <a href="http://www.usthb.dz/en" class="category"> 
+                <small>USTHB, Algiers. Algeria</small>
+              </a>
+              <div class="col-md-offset-1 col-xs-offset-1">
+                  <br> Algorithm Complexity
+                  <br> Multitasking algorithms
+                  <br> Programming in a distributed environment
+              </div>
+          </div><br><br>
+          <div align="left" class="col-md-offset-1 col-xs-offset-1 resume-content">
+              <strong class="resume-duration">September 2010 - June 2013</strong>&nbsp;&nbsp;
+              <span class="resume-keyword">Bachelor's Degree</span> in Computer Science. 
+              <a href="http://www.usthb.dz/en" class="category"> 
+                <small>USTHB, Algiers. Algeria</small>
+              </a> 
+              <div class="col-md-offset-1 col-xs-offset-1">
+                  <br> Algorithms and programming fundamentals in C.
+                  <br> Object Oriented programming with JAVA.
+                  <br> Relational Data Bases (SQL).
+                  <br> Software Design using UML.
+              </div>
+          </div>
+
+          <h1 class="brand-heading">&nbsp;</h1>
+          <h2 class="resume-title"><span class="fa fa-briefcase"></span> Work experience</h2>
+          <div align="left" class="col-md-offset-1 col-xs-offset-1 resume-content">
+              <strong class="resume-duration">October 2016 - present</strong>&nbsp;&nbsp;
+              <span class="resume-keyword">Researcher </span> at the National Institute of Sandards and Technology
+              <a href="http://www.nist.gov" class="category"> 
+                <small>NIST</small>
+              </a> 
+              <div class="col-md-offset-1 col-xs-offset-1 resume-content">
+                  <br><strong>Background</strong> 
+                  <div>
+                      <br><a href="https://www.nist.gov/publications/cloud-security-automation-framework" class="resume-keyword">Cloud Computing,</a> architecture design, deployement, automation, and monitoring with openstack
+                      <br><a href="https://github.com/usnistgov/Blockchain" class="resume-keyword">Blockchain,</a> helping build a multi model educational blockchain based on the Bitcoin blockchain using Golang
+                      <br><a href="https://named-data.net/" class="resume-keyword">Named Data Networking,</a> Building a concurrent forwarder with Golang, testing and measurement 
+                  </div>
+              </div>
+          </div>
+
+          <h1 class="brand-heading">&nbsp;</h1>
+          <h2 class="resume-title"><span class="fa fa-users"></span> Internships</h2>
+          <div align="left" class="col-md-offset-1 col-xs-offset-1 resume-content">
+              <strong class="resume-duration">January 2013 – June 2013</strong>&nbsp;&nbsp;
+              <span class="resume-keyword">Full Stack developper </span> at
+              <a href="http://www.sritech.dz/" class="category"> 
+                <small> SriTech, Algiers. Algeria</small>
+              </a> 
+              <div class="col-md-offset-1 col-xs-offset-1 resume-content">
+                  <br><strong>Background</strong> 
+                  <br> SriTech is company that offers drive-testing and data gathering services for
+                  Radio Network Planning and Optimization on GSM, EGPRS, UMTS, HSPA, and LTE.
+                  with the big amounts of data they gathered there was a need for a System that off ers easy
+                  management and persistent data.
+                  <br><br><strong>During 6 moths our team worked on</strong>
+                  <br><span class="resume-keyword">Designing a data model</span> and implement it as a relational database for data persistence.
+                  <br><span class="resume-keyword">Developing a front-end web interface</span> for more appealing data visualization.
+                  <br><span class="resume-keyword">Developing back-end php</span> web services for user management, and data processing.
+                  <br><br><strong>Environment</strong> 
+                  <br> MySql, Php, HTML5, CSS3, bootstrap
+              </div>
+          </div>
+
+          <h1 class="brand-heading">&nbsp;</h1>
+          <h2 class="resume-title"><span class="fa fa-globe"></span> Languages</h2>
+          <div align="left" class="col-md-offset-1 col-xs-offset-1 resume-content">
+              <strong><span class="resume-keyword">English</span></strong>&nbsp;&nbsp;&nbsp; Full professional proficiency 
+              <br><strong><span class="resume-keyword">French</span></strong>&nbsp;&nbsp;&nbsp;  Fluent 
+              <br><strong><span class="resume-keyword">Arabic</span></strong>&nbsp;&nbsp;&nbsp;  Native Language
+              <br><strong><span class="resume-keyword">Kabyle</span></strong>&nbsp;&nbsp;&nbsp;  Native Language 
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    {% include footer.html %}
+
+    {% include js.html %}
+
+  </body>
+</html>
+
+<!-- Blog Layout End -->
