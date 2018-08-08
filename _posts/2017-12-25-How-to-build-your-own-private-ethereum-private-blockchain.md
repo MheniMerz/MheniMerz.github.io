@@ -146,17 +146,17 @@ in a new terminal we will start mist and make it attach to the private network b
 ```
 the MIST browser shows lots of information, you can see that i have mined 72 blocks so far which resulted in 360 Ether sent to the main account, the other account is empty and we will send him some Ether next.
 
-![accounts](https://github.com/haniMerzouki/haniMerzouki.github.io/blob/master/img/posts/2017-12-25-How-to-build-your-own-private-ethereum-private-blockchain/accounts.jpg)
+![accounts](/img/posts/2017-12-25-How-to-build-your-own-private-ethereum-private-blockchain/accounts.jpg)
 
 making transactions is very straight forward, we go to the send tab and we find a regular web form to fill once filled "copy and paste the recipient address" hit the send button, you will be asked to type the password of the sender's account, do that and wait for a few seconds *"depending on the difficulty in the genesis file"* to see the Ether go from one account to the other.
 
-![transaction](https://github.com/haniMerzouki/haniMerzouki.github.io/blob/master/img/posts/2017-12-25-How-to-build-your-own-private-ethereum-private-blockchain/transaction.jpg)
+![transaction](/img/posts/2017-12-25-How-to-build-your-own-private-ethereum-private-blockchain/transaction.jpg)
 
 > ***note*** : *make sure the geth node is mining blocks, if not start the mining process*
 
 to check if the transaction was confirmed we use MIST account overview, the second account now has 50 Ether, "the extra 10 Ether in the main account came from the mining process"
 
-![received](https://github.com/haniMerzouki/haniMerzouki.github.io/blob/master/img/posts/2017-12-25-How-to-build-your-own-private-ethereum-private-blockchain/received.jpg)
+![received](/img/posts/2017-12-25-How-to-build-your-own-private-ethereum-private-blockchain/received.jpg)
 
 ### Conclusion
 in this work we have built our private ethereum blockchain which is the first step towards creating an ERC20 token. we've explored some tools that make interaction with the blockchain easy and intuitive.
