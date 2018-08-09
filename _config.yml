@@ -4,7 +4,7 @@
 # NB! Set your site's url, otherwise stuff will break :)
 
 # host: "192.168.1.254"
-url: "https://haniMerzouki.github.io"
+url: "https://merzouki.com"
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (https://yourusername.github.io/repository-name)
@@ -24,7 +24,7 @@ google-tracking-id: ""
 # then you should disable it
 
 force-https: True
-
+enforce_ssl: merzouki.com
 #############
 # HTML Head #
 #############
