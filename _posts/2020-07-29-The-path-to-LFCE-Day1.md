@@ -2,7 +2,7 @@
 layout: post
 section-type: post
 title: "The path to LFCE Day1 : using Git"
-category: [ 'linux' , 'lfce' ]
+category: 'linux'
 tags: [ 'linux', 'lfce' ]
 ---
 
@@ -15,9 +15,16 @@ moreover, storing different versions of a file can become tedious very quickly a
 VCS offers an easy way to store a changelog for the state of a project (changes on files) and enables multiple developers to work simultaneously on their local machines and merge the changes from all developers without big hassles.
 
 #### What types of VCS are there?
+there are mainly two types of version control systems, distributed and cetnralized.
 
+centralized VCS use the client-server model where the server keeps one centralized repository of the code, it also uses locking mechanisms controlled by the server to ensure that only one developer is working on a piece of code at a particular time and the access is unlocked once the developer pushes his code to the central repository.
+examples of such systems include [apache subrevision, ](https://subversion.apache.org/) [Concurrent Versions System](https://savannah.nongnu.org/projects/cvs)
+
+distributed VCS work on a peer-to-peer model where a copy of the codebase and the history of changes made to the repository is kept on all developers machines, moreover there is no locking in this model developers can works on any parts of the code simultaneously and once done they can incorporate the changes to the master copy which kept in a client machine rather than a central server and is considered the final product that all developers will push their changes to.
+examples of distibuted VCS include [Git](https://git-scm.com/), [mercurial](https://www.mercurial-scm.org/) 
 
 #### The different copies of a repository
+whatch the following video, it does a great job explaining the different copies and states of a repository. 
 [https://www.youtube.com/watch?v=3a2x1iJFJWc](https://www.youtube.com/watch?v=3a2x1iJFJWc)
 
 #### Hands on
@@ -235,3 +242,57 @@ so we need to download the latest updates to out local repository.
     mheni@host01:~/testRepo$ git diff master origin
     mheni@host01:~/testRepo$
 ```
+
+## Flashcards
+<!-- horizontal -->
+
+<h4>Horizontal Flip</h4>
+<div class="flip">
+    <div class="front">
+       <h1 class="text-shadow">Why do we need to use a version control system? </hi>
+    </div>
+    <div class="back">
+       <p>because the alternative is to create a new file for each change (new version) and that can get overwhelming very quickly.
+version control systems enable us to access the changelog of a file easily.</p>
+    </div>
+</div>
+
+<div class="flip">
+    <div class="front">
+       <h1 class="text-shadow">what is Git? </hi>
+    </div>
+    <div class="back">
+       <p>Git is a distributed version control system, meaning that all users access to the changelog and they have a copy of the repository  on their systems instead of the code being stored in one central server.</p>
+    </div>
+</div>
+
+<div class="flip">
+    <div class="front">
+       <h1 class="text-shadow">how do we initialize a repo?
+and, what does it do? </hi>
+    </div>
+    <div class="back">
+      <p>~$git init [directory]</p>
+<p>`git init` enables git to start tracking the repo for future changes to be done.</p>
+    </div>
+</div>
+
+<div class="flip">
+    <div class="front">
+       <h1 class="text-shadow">how to add tracking for a new file? </hi>
+    </div>
+    <div class="back">
+      <p>`~$git add [filename]` or `~$git add *` to add all files.</p>
+    </div>
+</div>
+
+<div class="flip">
+    <div class="front">
+       <h1 class="text-shadow">how to commit a change? and what does it mean?</hi>
+    </div>
+    <div class="back">
+      <p>`~$git commit -m "message explaining the updates"`</p>
+      <p>`~$git commit -a -m "message "` ==> add and commit</p>
+<p>`~$git commit -m "message" [file1] [file2]` ==> commit specific files.</p>
+    </div>
+</div>
