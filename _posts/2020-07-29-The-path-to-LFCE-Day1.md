@@ -244,12 +244,10 @@ so we need to download the latest updates to out local repository.
 ```
 
 ## Flashcards
-<!-- horizontal -->
 
-<h4>Horizontal Flip</h4>
 <div class="flip">
     <div class="front">
-       <h1 class="text-shadow">Why do we need to use a version control system? </hi>
+       <h1 class="text-shadow">Why do we need to use a version control system? </h1>
     </div>
     <div class="back">
        <p>because the alternative is to create a new file for each change (new version) and that can get overwhelming very quickly.
@@ -259,7 +257,7 @@ version control systems enable us to access the changelog of a file easily.</p>
 
 <div class="flip">
     <div class="front">
-       <h1 class="text-shadow">what is Git? </hi>
+       <h1 class="text-shadow">what is Git? </h1>
     </div>
     <div class="back">
        <p>Git is a distributed version control system, meaning that all users access to the changelog and they have a copy of the repository  on their systems instead of the code being stored in one central server.</p>
@@ -279,7 +277,7 @@ and, what does it do? </hi>
 
 <div class="flip">
     <div class="front">
-       <h1 class="text-shadow">how to add tracking for a new file? </hi>
+       <h1 class="text-shadow">how to add tracking for a new file? </h1>
     </div>
     <div class="back">
       <p>`~$git add [filename]` or `~$git add *` to add all files.</p>
@@ -288,7 +286,7 @@ and, what does it do? </hi>
 
 <div class="flip">
     <div class="front">
-       <h1 class="text-shadow">how to commit a change? and what does it mean?</hi>
+       <h1 class="text-shadow">how to commit a change? and what does it mean?</h1>
     </div>
     <div class="back">
       <p>`~$git commit -m "message explaining the updates"`</p>
