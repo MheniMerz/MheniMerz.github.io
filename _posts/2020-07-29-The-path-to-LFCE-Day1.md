@@ -179,19 +179,33 @@ create another user, fork it, update file, commit, push
     Total 3 (delta 0), reused 0 (delta 0)
     To https://github.com/MheniMerz/testRepo
     f48a02e..5ed7705  master -> master
-    user2@host01:~/testRepo$ git diff origin master
+    user2@host01:~/testRepo$ git diff master origin
     user2@host01:~/testRepo$
     ```
 
 pull updates from remote repo to local repo
-<<<<<<< HEAD
    now we need to goack to the other user `exit`, and check the difference between his local repo and the remote repo
    ```
-    mheni@host01:~/testRepo$ git diff remote
-    
+    mheni@host01:~/testRepo$ git diff master origin
+    diff --git a/file2 b/file2
+    new file mode 100644
+    index 0000000..e89c9e4
+    --- /dev/null
+    +++ b/file2
+    @@ -0,0 +1 @@
+    +The section - Fork it over
    ```
-=======
-   now we need to goack to the other user `exit`
->>>>>>> c2ab52f79df66bffb3a2255a796b6064541e277f
-
-
+   so we need to download the latest updates to out local repository.
+   ```
+    mheni@host01:~/testRepo$ git pull
+    remote: Enumerating objects: 2, done.
+    remote: Counting objects: 100% (2/2), done.
+    remote: Compressing objects: 100% (2/2), done.
+    remote: Total 2 (delta 3), reused 1 (delta 0), pack-reused 0
+    Unpacking objects: 100% (2/2), done.
+    From https://github.com/MheniMerz/testRepo
+    f48a02e..5ed7705  master     -> origin/master
+    Updating f48a02e..5ed7705
+    mheni@host01:~/testRepo$ git diff master origin
+    mheni@host01:~/testRepo$
+   ```
