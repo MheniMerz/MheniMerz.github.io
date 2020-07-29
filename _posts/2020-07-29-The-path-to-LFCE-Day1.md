@@ -6,21 +6,22 @@ category: [ 'linux' , 'lfce' ]
 tags: [ 'linux', 'lfce' ]
 ---
 
-##Using a version control system (VCS)
+## Using a version control system (VCS)
 
-###Why use a VCS ?
+### Why use a VCS ?
 Not using a VCS can lead to unnecessary complications when working in a team, for instance if a team member is working on a specific file then he will have to notify other members and ask them not to modify the same file until he's done, which is a highly inefficient workflow.
 moreover, storing different versions of a file can become tedious very quickly and if we consider a project with thousands of files that are updated every day this becomes a nightmare.
 
 VCS offers an easy way to store a changelog for the state of a project (changes on files) and enables multiple developers to work simultaneously on their local machines and merge the changes from all developers without big hassles.
 
-####What types of VCS are there?
+#### What types of VCS are there?
 
 
-####The different copies of a repository
+#### The different copies of a repository
 [https://www.youtube.com/watch?v=3a2x1iJFJWc](https://www.youtube.com/watch?v=3a2x1iJFJWc)
-####Hands on
-1. creat and initialize a git repository
+
+#### Hands on
+creat and initialize a git repository
    we're strating off with an empty hoe directory
    ```
     mheni@host01:~$ cd
@@ -43,7 +44,7 @@ VCS offers an easy way to store a changelog for the state of a project (changes 
     mheni@host01:~$ ls -a testRepo/.git/
     .  ..  branches  config  description  HEAD  hooks  info  objects  refs
     ```
-2. add files
+add files
    we're just creating a file and adding ome content to it
    ```
    mheni@host01:~$ cd testRepo/
@@ -87,11 +88,11 @@ VCS offers an easy way to store a changelog for the state of a project (changes 
     create mode 100644 file1
     $
     ```
-3. push it, and don't forget to setup a remote repo
+push it, and don't forget to setup a remote repo
     first we will use github to create a remote repo
-    ![create repo](/img/posts/2020-07-29-The-path-to-LFCE-Day1/create-repo.png)
+    ![create repo](/img/posts/2020-07-29-The-path-to-LFCE-Day1/create-repo.PNG)
     next we will set up the remote repository for our local repository, for that we need copy the link from github
-    ![copy link](/img/posts/2020-07-29-The-path-to-LFCE-Day1/get-link.png)
+    ![copy link](/img/posts/2020-07-29-The-path-to-LFCE-Day1/get-link.PNG)
     now we can set up the remote repo and push our "code".
     ```
     $ git remote add origin https://github.com/MheniMerz/testRepo.git
@@ -105,7 +106,7 @@ VCS offers an easy way to store a changelog for the state of a project (changes 
         To https://github.com/MheniMerz/testRepo
         * [new branch]      master -> master
     ```
-4. create another user, fork it, update file, commit, push
+create another user, fork it, update file, commit, push
    we will simulate a colleague by creating a new user and have him download the repo and modify it, we use `$ adduser user2` to create the user.
 
    switch to user2 `$ su - user2` and move to the home directory `$ cd ~`.
@@ -182,7 +183,7 @@ VCS offers an easy way to store a changelog for the state of a project (changes 
     user2@host01:~/testRepo$
     ```
 
-5. pull updates from remote repo to local repo
+pull updates from remote repo to local repo
    now we need to goack to the other user `exit`
-   
+
 
