@@ -266,8 +266,7 @@ version control systems enable us to access the changelog of a file easily.</p>
 
 <div class="flip">
     <div class="front">
-       <h1 class="text-shadow">how do we initialize a repo?
-and, what does it do? </hi>
+       <h1 class="text-shadow">how do we initialize a repo? and, what does it do? </h1>
     </div>
     <div class="back">
       <p>~$git init [directory]</p>
