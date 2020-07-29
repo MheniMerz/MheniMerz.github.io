@@ -21,96 +21,112 @@ VCS offers an easy way to store a changelog for the state of a project (changes 
 [https://www.youtube.com/watch?v=3a2x1iJFJWc](https://www.youtube.com/watch?v=3a2x1iJFJWc)
 
 #### Hands on
-creat and initialize a git repository
-   we're strating off with an empty hoe directory
+
+creat and initialize a git repository, we're strating off with an empty hoe directory
+
    ```
-    mheni@host01:~$ cd
-    mheni@host01:~$ pwd
-    /home/mheni
-    
-    mheni@host01:~$ ls
+        mheni@host01:~$ cd
+        mheni@host01:~$ pwd
+        /home/mheni
+        
+        mheni@host01:~$ ls
     ```
+
     `git init ` creates the directory for the repo and initializes it with a hidden folder `.git`
-    ```
-    mheni@host01:~$ git init testRepo
-    Initialized empty Git repository in /home/mheni/testRepo/.git/
-    
-    mheni@host01:~$ ls
-    testRepo
 
-    mheni@host01:~$ ls -a testRepo/
-    .  ..  .git
-    
-    mheni@host01:~$ ls -a testRepo/.git/
-    .  ..  branches  config  description  HEAD  hooks  info  objects  refs
     ```
-add files
-   we're just creating a file and adding ome content to it
+        mheni@host01:~$ git init testRepo
+        Initialized empty Git repository in /home/mheni/testRepo/.git/
+        
+        mheni@host01:~$ ls
+        testRepo
+
+        mheni@host01:~$ ls -a testRepo/
+        .  ..  .git
+        
+        mheni@host01:~$ ls -a testRepo/.git/
+        .  ..  branches  config  description  HEAD  hooks  info  objects  refs
+    ```
+
+now we can start adding files, we're just creating a file and adding some content to it
+
    ```
-   mheni@host01:~$ cd testRepo/
-   mheni@host01:~/testRepo$ echo "Salt-N-Pepa" > file1
-   mheni@host01:~/testRepo$ echo "push it" >> file1
-   mheni@host01:~/testRepo$
+    mheni@host01:~$ cd testRepo/
+    mheni@host01:~/testRepo$ echo "Salt-N-Pepa" > file1
+    mheni@host01:~/testRepo$ echo "push it" >> file1
+    mheni@host01:~/testRepo$
    ```
+
    now we can check the status of our repo with `git status`, which shows that file1 is untracked meaning that we've added the file to our working directory but not to the staging area.
+
    ```
-   mheni@host01:~/testRepo$ git status
-   On branch master
-
-   No commits yet
-
-   Untracked files:
-   (use "git add <file>..." to include in what will be committed)
-           file1
-
-   nothing added to commit but untracked files present (use "git add" to track)
-   ```
-   we need to use `git add` in order to stage the file, checking the status again shows that `file1` is now tracked and we can commit it to the local repository.
-    ```
-    mheni@host01:~/testRepo$ git add *
     mheni@host01:~/testRepo$ git status
     On branch master
 
     No commits yet
 
-    Changes to be committed:
-    (use "git rm --cached <file>..." to unstage)
-            new file:   file1
+    Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+            file1
+
+    nothing added to commit but untracked files present (use "git add" to track)
+   ```
+  
+   we need to use `git add` in order to stage the file, checking the status again shows that `file1` is now tracked and we can commit it to the local repository.
+  
+    ```
+        mheni@host01:~/testRepo$ git add *
+        mheni@host01:~/testRepo$ git status
+        On branch master
+
+        No commits yet
+
+        Changes to be committed:
+        (use "git rm --cached <file>..." to unstage)
+                new file:   file1
 
     ```
+    
     we need to setup our username and email before we can commit.
+    
     ```
-    $ git config --global user.name "mheniMerz"
-    $ git config --global user.email "mheni.merzouki@nist.gov"
-    $ git commit -m "first commit"
-    [master (root-commit) f48a02e] first commit
-    1 file changed, 2 insertions(+)
-    create mode 100644 file1
-    $
+        $ git config --global user.name "mheniMerz"
+        $ git config --global user.email "mheni.merzouki@nist.gov"
+        $ git commit -m "first commit"
+        [master (root-commit) f48a02e] first commit
+        1 file changed, 2 insertions(+)
+        create mode 100644 file1
+        $
     ```
-push it, and don't forget to setup a remote repo
-    first we will use github to create a remote repo
+
+push it, and don't forget to setup a remote repo first we will use github to create a remote repo
+    
     ![create repo](/img/posts/2020-07-29-The-path-to-LFCE-Day1/create-repo.PNG)
-    next we will set up the remote repository for our local repository, for that we need copy the link from github
+    
+next we will set up the remote repository for our local repository, for that we need copy the link from github
+    
     ![copy link](/img/posts/2020-07-29-The-path-to-LFCE-Day1/get-link.PNG)
-    now we can set up the remote repo and push our "code".
+    
+now we can set up the remote repo and push our "code".
+
     ```
-    $ git remote add origin https://github.com/MheniMerz/testRepo.git
-    $ git push origin master
-        Username for 'https://github.com': mheniMerz
-        Password for 'https://mheniMerz@github.com':
-        Enumerating objects: 3, done.
-        Counting objects: 100% (3/3), done.
-        Writing objects: 100% (3/3), 230 bytes | 230.00 KiB/s, done.
-        Total 3 (delta 0), reused 0 (delta 0)
-        To https://github.com/MheniMerz/testRepo
-        * [new branch]      master -> master
+        $ git remote add origin https://github.com/MheniMerz/testRepo.git
+        $ git push origin master
+            Username for 'https://github.com': mheniMerz
+            Password for 'https://mheniMerz@github.com':
+            Enumerating objects: 3, done.
+            Counting objects: 100% (3/3), done.
+            Writing objects: 100% (3/3), 230 bytes | 230.00 KiB/s, done.
+            Total 3 (delta 0), reused 0 (delta 0)
+            To https://github.com/MheniMerz/testRepo
+            * [new branch]      master -> master
     ```
 create another user, fork it, update file, commit, push
    we will simulate a colleague by creating a new user and have him download the repo and modify it, we use `$ adduser user2` to create the user.
 
    switch to user2 `$ su - user2` and move to the home directory `$ cd ~`.
    now we can clone the remote repo.
+   
     ```
     user2@host01:~$ git clone https://github.com/MheniMerz/testRepo
     Cloning into 'testRepo'...
@@ -125,7 +141,9 @@ create another user, fork it, update file, commit, push
 
     nothing to commit, working tree clean
    ```
+  
    We will add a second file.
+  
    ```
     user2@host01:~/testRepo$ echo "The section - Fork it over" > file2
     user2@host01:~/testRepo$ git status
@@ -139,7 +157,9 @@ create another user, fork it, update file, commit, push
     nothing added to commit but untracked files present (use "git add" to track)
     user2@host01:~/testRepo$
    ```
+   
    commit and push.
+   
    ```
     user2@host01:~/testRepo$ git add *
     user2@host01:~/testRepo$ git commit -m "add file2"
@@ -153,8 +173,10 @@ create another user, fork it, update file, commit, push
 
     nothing to commit, working tree clean
    ```
+   
     before pushing our modifications we can check how different is the remote repo from our local repo.
     we can see that our local repo has new changes (is ahead of the remote repo) so we can go ahead and push it
+   
     ```
     user2@host01:~/testRepo$ git diff origin master
     diff --git a/file2 b/file2
@@ -166,7 +188,9 @@ create another user, fork it, update file, commit, push
     +The section - Fork it over
     user2@host01:~/testRepo$
     ```
+   
     we can push it with the same command as before, note that the remote link is already setup because we cloned the repo instead of initialzing it.
+   
     ```
     user2@host01:~/testRepo$ git push origin master
     Username for 'https://github.com': mheniMerz
@@ -183,8 +207,8 @@ create another user, fork it, update file, commit, push
     user2@host01:~/testRepo$
     ```
 
-pull updates from remote repo to local repo
-   now we need to goack to the other user `exit`, and check the difference between his local repo and the remote repo
+pull updates from remote repo to local repo, now we need to goack to the other user `exit`, and check the difference between his local repo and the remote repo
+   
    ```
     mheni@host01:~/testRepo$ git diff master origin
     diff --git a/file2 b/file2
@@ -195,7 +219,9 @@ pull updates from remote repo to local repo
     @@ -0,0 +1 @@
     +The section - Fork it over
    ```
+   
    so we need to download the latest updates to out local repository.
+   
    ```
     mheni@host01:~/testRepo$ git pull
     remote: Enumerating objects: 2, done.
