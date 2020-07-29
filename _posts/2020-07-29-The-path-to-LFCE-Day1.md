@@ -184,10 +184,14 @@ create another user, fork it, update file, commit, push
     ```
 
 pull updates from remote repo to local repo
+<<<<<<< HEAD
    now we need to goack to the other user `exit`, and check the difference between his local repo and the remote repo
    ```
     mheni@host01:~/testRepo$ git diff remote
     
    ```
+=======
+   now we need to goack to the other user `exit`
+>>>>>>> c2ab52f79df66bffb3a2255a796b6064541e277f
 
 
