@@ -32,7 +32,7 @@ creat and initialize a git repository, we're strating off with an empty hoe dire
     mheni@host01:~$ ls
 ```
 
-    `git init ` creates the directory for the repo and initializes it with a hidden folder `.git`
+`git init ` creates the directory for the repo and initializes it with a hidden folder `.git`
 
 ```
     mheni@host01:~$ git init testRepo
@@ -57,7 +57,7 @@ now we can start adding files, we are just creating a file and adding some conte
     mheni@host01:~/testRepo$
 ```
 
-   now we can check the status of our repo with `git status`, which shows that file1 is untracked meaning that we've added the file to our working directory but not to the staging area.
+now we can check the status of our repo with `git status`, which shows that file1 is untracked meaning that we've added the file to our working directory but not to the staging area.
 
 ```
     mheni@host01:~/testRepo$ git status
@@ -72,7 +72,7 @@ now we can start adding files, we are just creating a file and adding some conte
     nothing added to commit but untracked files present (use "git add" to track)
 ```
   
-   we need to use `git add` in order to stage the file, checking the status again shows that `file1` is now tracked and we can commit it to the local repository.
+we need to use `git add` in order to stage the file, checking the status again shows that `file1` is now tracked and we can commit it to the local repository.
   
 ```
     mheni@host01:~/testRepo$ git add *
@@ -87,7 +87,7 @@ now we can start adding files, we are just creating a file and adding some conte
 
 ```
     
-    we need to setup our username and email before we can commit.
+we need to setup our username and email before we can commit.
     
 ```
     $ git config --global user.name "mheniMerz"
@@ -121,11 +121,11 @@ now we can set up the remote repo and push our "code".
         To https://github.com/MheniMerz/testRepo
         * [new branch]      master -> master
 ```
-create another user, fork it, update file, commit, push
-   we will simulate a colleague by creating a new user and have him download the repo and modify it, we use `$ adduser user2` to create the user.
+create another user, update file, commit, push
+we will simulate a colleague by creating a new user and have him download the repo and modify it, we use `$ adduser user2` to create the user.
 
-   switch to user2 `$ su - user2` and move to the home directory `$ cd ~`.
-   now we can clone the remote repo.
+switch to user2 `$ su - user2` and move to the home directory `$ cd ~`.
+now we can clone the remote repo.
    
 ```
     user2@host01:~$ git clone https://github.com/MheniMerz/testRepo
@@ -142,7 +142,7 @@ create another user, fork it, update file, commit, push
     nothing to commit, working tree clean
 ```
   
-   We will add a second file.
+We will add a second file.
   
 ```
     user2@host01:~/testRepo$ echo "The section - Fork it over" > file2
@@ -158,7 +158,7 @@ create another user, fork it, update file, commit, push
     user2@host01:~/testRepo$
 ```
    
-   commit and push.
+commit and push.
    
 ```
     user2@host01:~/testRepo$ git add *
@@ -174,8 +174,8 @@ create another user, fork it, update file, commit, push
     nothing to commit, working tree clean
 ```
    
-    before pushing our modifications we can check how different is the remote repo from our local repo.
-    we can see that our local repo has new changes (is ahead of the remote repo) so we can go ahead and push it
+before pushing our modifications we can check how different is the remote repo from our local repo.
+we can see that our local repo has new changes (is ahead of the remote repo) so we can go ahead and push it
    
 ```
     user2@host01:~/testRepo$ git diff origin master
@@ -189,7 +189,7 @@ create another user, fork it, update file, commit, push
     user2@host01:~/testRepo$
 ```
    
-    we can push it with the same command as before, note that the remote link is already setup because we cloned the repo instead of initialzing it.
+we can push it with the same command as before, note that the remote link is already setup because we cloned the repo instead of initialzing it.
    
 ```
     user2@host01:~/testRepo$ git push origin master
@@ -220,7 +220,7 @@ pull updates from remote repo to local repo, now we need to goack to the other u
     +The section - Fork it over
 ```
    
-   so we need to download the latest updates to out local repository.
+so we need to download the latest updates to out local repository.
    
 ```
     mheni@host01:~/testRepo$ git pull
