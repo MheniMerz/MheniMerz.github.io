@@ -1,20 +1,21 @@
 ---
 layout: post
 section-type: post
-title: "The path to LFCE Day2 : Running commands on multiple hosts simultanousely"
-category: [ 'linux' , 'lfce' ]
+title: "The path to LFCE Day3 : Running commands on multiple hosts simultanousely"
+category: 'linux'
 tags: [ 'linux', 'lfce' ]
 ---
 
 ## Running commands on multiple hosts simultanousely
 
 ### what's the usecase for this?
-The diff command enables us to compare two files, the output of the example below essentially tells us that the first line is the same in both files and that file2 has  two additional lines.
+consider a scenario where you have to set up a highly available service where you would have multiple nodes running the same software with the same configurations, int this case it can be useful to install and configure this service on all nodes once instead of loging into each server and repeating the install and configuration process.
 
 ### how do we do it?
 
-first off the pssh package is not included in the default packages, which means we need to add the `epel-release` package to our system's repo
-    [cloud_user@ip-10-0-1-31 ~]$ sudo yum install epel-release
+first off on centos the pssh package is not included in the default package repository, which means we need to add the `epel-release` repository to our system
+
+    [cloud_user@ip-10-0-1-31 ~]$ sudo yum install epel-release -y
     Loaded plugins: fastestmirror
     Loading mirror speeds from cached hostfile
     * base: d36uatko69830t.cloudfront.net
@@ -56,14 +57,16 @@ next we will install the `pssh` package
 
     Complete!
 
-now we need some remote hosts to run commands on, as i'm writing this i don't have access to additional servers so i will use 3 docker containers running the ubuntu image, you can use the `pssh` command on your servers if you have them or use containers for practicing.
+now we need some remote hosts to run commands on, as i'm writing this i don't have access to additional servers so i will use 3 docker containers running the ubuntu+sshd image, you can use the `pssh` command on your servers if you have them or use containers for practicing.
 
-install docker
+we first need to install docker
+
     [cloud_user@ip-10-0-1-31 ~]$ sudo yum install docker -y
     Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-manager
 
     Complete!
-enable and start the docker service
+
+then we will `enable` and `start` the docker service as it is not automatically started when the install finishes.
 
     [cloud_user@ip-10-0-1-31 ~]$ sudo systemctl enable docker
     Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
@@ -78,8 +81,10 @@ enable and start the docker service
             ├─1865 /usr/bin/dockerd-current --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current --default-runtime=docker-runc --exec-opt native.cgro...
             └─1870 /usr/bin/docker-containerd-current -l unix:///var/run/docker/libcontainerd/docker-containerd.sock --metrics-interval=0 --start-timeout 2m --sta...
 
-start 3 containers 
+start 3 containers (this can be done more effectively using swarm but to simplify things we will just run the same command 3 times) not that the first time produces a lot more output because it is downloading the image.
 
+to start a container we use `docker run` to for the containers to run in the background ans avoid them taking over our terminal we use the option `-d`, and to provide a tty that we can access to interact with the terminal we use `-t`.
+`--name <name>` assigns a name to the container instead of docker assigning a random name to it and tha last argument is the image name that we can find browsing [hub.docker.com](hub.docker.com)
 
     [cloud_user@ip-10-0-1-31 ~]$ sudo docker run -dt --name host01 rastasheep/ubuntu-sshd
     Unable to find image 'rastasheep/ubuntu-sshd:latest' locally
@@ -99,7 +104,7 @@ start 3 containers
     68090f1939562925d70be46b43ba863d9ac514483c5bb6068ba3990757ff4612
 
 
-check status
+check status we can see that they are all running (ex. host03 has been `Up 19 seconds`)
     [cloud_user@ip-10-0-1-31 ~]$ sudo docker container ls -a
     CONTAINER ID        IMAGE                    COMMAND               CREATED             STATUS              PORTS               NAMES
     68090f193956        rastasheep/ubuntu-sshd   "/usr/sbin/sshd -D"   20 seconds ago      Up 19 seconds       22/tcp              host03

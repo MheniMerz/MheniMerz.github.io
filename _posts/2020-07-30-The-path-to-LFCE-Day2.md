@@ -2,7 +2,7 @@
 layout: post
 section-type: post
 title: "The path to LFCE Day2 : Manipulating Files programaticaly"
-category: [ 'linux' , 'lfce' ]
+category: 'linux'
 tags: [ 'linux', 'lfce' ]
 ---
 
@@ -89,9 +89,9 @@ the script simply tests ICMP connectivity to a given address (not that usefull b
      #!/bin/bash
      ping 10.0.0.1
 
-say we want to change the address to test connectivity to the internet instead of our internal gateway, we can use a regular expression `s` to substitute the local address `10.0.0.1` by the google DNS `8.8.8.8` and specify the we want this to take a global effect on the file otherwise it will only replace the first occurence.
+say we want to change the address to test connectivity to the internet instead of our internal gateway, we can use a regular expression `s` to substitute the local address `10.0.0.1` by the google DNS `8.8.8.8`.
 
-   $ sed 's/10.0.0.1/8.8.8.8/g' test.sh
+   $ sed 's/10.0.0.1/8.8.8.8/' test.sh
     #!/bin/bash
     ping 8.8.8.8
 
