@@ -23,30 +23,39 @@ the interviewer drew a home network on the whiteboard without any labels and sta
 some questions were to general or open ended but the interviewer always helped narrowing down the topic they are trying to ask about.
 
 Q) what needs to happen in order for this PC to get a web page from the webserver on the internet.
+
 A) the first thing we need is to get an IP address, which means we need a DHCP server somewhere on this network.
 
 Q) yes, so let say the firewall is also configured to be a DHCP servre. How does getting an IP address from the DHCP server work.
+
 A) DORA message exchange, i remebered the discover and offer messages but forgot the other two
 
 Q) ok let's say we've successfully got an IP address, what IP most likely that'd be?
+
 A) 192.168.1.2/24, GW:192.168.1.1, DNS: 8.8.8.8
 
 Q) what's special about this IP ?
+
 A) class C (/24) private.
 
 Q) what does private mean?
+
 A) not reachable or routable throught the internet
 
 Q) how is the network mask used?
+
 A) as basic as this question is it was quite confusing, i answered it's used to define the range of addresses that can be allocated to hosts. but for some reason that wasn;t quite satisfying for the interviewer.
 
 Q) what need to happen next ?
+
 A) we need to translate the hostname `google.com` to an IP address, and for that we use DNS
 
 Q) how do we get that IP address from the DNS?
+
 A) we send a DNS request (we went through the packet format sent)
 
 Q) ok once we got that, how do we get the webpage from the webserver?
+
 A) send an HTTP request, we talked about HTTP response codes
 
 Q) before sending the HTTP request something needs to happen, what is it?
