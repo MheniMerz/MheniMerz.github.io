@@ -20,14 +20,27 @@ there are only two ways anyone has found to do this well.
 
 **index guiding (total internal reflection).** put a high-index core inside a lower-index cladding. light hitting the boundary at a shallow enough angle reflects instead of escaping. four of the five fibers below work this way.
 
-```
-       cladding  n = 1.4440
-    +-------------------------+
-    |                         |
-    |   core   n = 1.4492     |   light bounces at the boundary
-    |                         |   and stays inside
-    +-------------------------+
-```
+<svg viewBox="0 0 640 218" width="100%" style="max-width:640px;margin:26px auto;display:block" role="img" aria-label="Index guiding: fiber cross section and a ray totally internally reflecting inside the core">
+<g font-family="'Open Sans',Helvetica,sans-serif">
+<circle cx="84" cy="104" r="68" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<circle cx="84" cy="104" r="15" fill="#3f5560" stroke="#7fd1ff" stroke-width="1.5"/>
+<text x="84" y="196" text-anchor="middle" font-size="11" fill="#8d8d8d">cross section</text>
+<rect x="206" y="36" width="330" height="136" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<rect x="206" y="84" width="330" height="40" fill="#3f5560"/>
+<line x1="206" y1="84" x2="536" y2="84" stroke="#7fd1ff" stroke-width="1.2"/>
+<line x1="206" y1="124" x2="536" y2="124" stroke="#7fd1ff" stroke-width="1.2"/>
+<path d="M206 120 L266 88 L326 120 L386 88 L446 120 L506 88 L536 104" fill="none" stroke="#ffd479" stroke-width="2.2"/>
+<circle cx="266" cy="88" r="3" fill="#ffd479"/><circle cx="326" cy="120" r="3" fill="#ffd479"/>
+<circle cx="386" cy="88" r="3" fill="#ffd479"/><circle cx="446" cy="120" r="3" fill="#ffd479"/>
+<text x="216" y="58" font-size="12" fill="#cfcfcf">cladding</text>
+<text x="216" y="74" font-size="10.5" fill="#8d8d8d">n = 1.4440</text>
+<text x="216" y="152" font-size="12" fill="#cfcfcf">cladding</text>
+<text x="548" y="100" font-size="12" fill="#7fd1ff">core</text>
+<text x="548" y="116" font-size="10.5" fill="#8d8d8d">n = 1.4492</text>
+<text x="371" y="198" text-anchor="middle" font-size="11.5" fill="#8d8d8d">shallow enough angle → it reflects instead of escaping</text>
+<text x="371" y="24" text-anchor="middle" font-size="11.5" fill="#8d8d8d">Δn = 0.36 %, and that is the entire trick</text>
+</g>
+</svg>
 
 the index difference is tiny. for standard singlemode it's about **0.36%**. that's the whole trick — a fraction of a percent of germanium doping in the core is what holds the internet together.
 
@@ -60,15 +73,25 @@ everything below is a consequence of this one number, plus what you do about pol
 
 fat core, so light has room to take many paths.
 
-```
-    62.5 or 50 um core
-    <------------->
-    +-------------------------+
-    |  ///////////////////    |    125 um cladding
-    |  ///  many paths  ///   |
-    |  ///////////////////    |
-    +-------------------------+
-```
+<svg viewBox="0 0 640 214" width="100%" style="max-width:640px;margin:26px auto;display:block" role="img" aria-label="Multimode fiber cross section with a 50 micron core and many ray paths">
+<g font-family="'Open Sans',Helvetica,sans-serif">
+<circle cx="84" cy="102" r="68" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<circle cx="84" cy="102" r="28" fill="#3f5560" stroke="#7fd1ff" stroke-width="1.5"/>
+<line x1="56" y1="102" x2="112" y2="102" stroke="#9fe8f5" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="84" y="188" text-anchor="middle" font-size="11" fill="#8d8d8d">50 µm core in 125 µm cladding</text>
+<rect x="206" y="34" width="414" height="136" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<rect x="206" y="62" width="414" height="80" fill="#3f5560"/>
+<line x1="206" y1="62" x2="620" y2="62" stroke="#7fd1ff" stroke-width="1.2"/>
+<line x1="206" y1="142" x2="620" y2="142" stroke="#7fd1ff" stroke-width="1.2"/>
+<line x1="206" y1="102" x2="620" y2="102" stroke="#7fd1ff" stroke-width="2"/>
+<path d="M206 102 L288 66 L370 138 L452 66 L534 138 L616 78" fill="none" stroke="#ffd479" stroke-width="2"/>
+<path d="M206 102 L330 68 L454 136 L578 72 L620 94" fill="none" stroke="#ff9f6e" stroke-width="2"/>
+<text x="216" y="52" font-size="11.5" fill="#cfcfcf">cladding</text>
+<text x="216" y="160" font-size="11.5" fill="#cfcfcf">cladding</text>
+<text x="413" y="192" text-anchor="middle" font-size="11.5" fill="#8d8d8d">hundreds of modes = hundreds of paths of different length</text>
+<text x="413" y="24" text-anchor="middle" font-size="11.5" fill="#8d8d8d">a fat core gives light room to take many routes</text>
+</g>
+</svg>
 
 the important detail is not the diameter, it's the **index profile**. there are two:
 
@@ -81,10 +104,27 @@ in a step index fiber, a ray bouncing at a steep angle travels a physically long
 
 graded index is the fix, and it's elegant. because the index falls off toward the edges, the outer rays spend their time in *faster* glass. they take a longer route at a higher speed. instead of zig-zagging they follow smooth sinusoidal curves, and the two effects very nearly cancel:
 
-```
-    step index    :  long path, same speed   ->  arrives late
-    graded index  :  long path, faster glass ->  arrives about on time
-```
+<svg viewBox="0 0 640 284" width="100%" style="max-width:640px;margin:26px auto;display:block" role="img" aria-label="Step index versus graded index multimode fiber, comparing ray paths and arrival times">
+<g font-family="'Open Sans',Helvetica,sans-serif">
+<text x="16" y="18" font-size="12.5" fill="#cfcfcf" font-weight="700">step index</text>
+<rect x="16" y="28" width="486" height="76" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.2"/>
+<rect x="16" y="46" width="486" height="40" fill="#3f5560"/>
+<path d="M16 66 L84 48 L152 84 L220 48 L288 84 L356 48 L424 84 L492 54" fill="none" stroke="#ff9f6e" stroke-width="2"/>
+<line x1="16" y1="66" x2="502" y2="66" stroke="#7fd1ff" stroke-width="2"/>
+<text x="512" y="58" font-size="11" fill="#7fd1ff">on time</text>
+<text x="512" y="76" font-size="11" fill="#ff9f6e">late</text>
+<text x="320" y="122" font-size="11.5" fill="#8d8d8d" text-anchor="middle">uniform core index — longer path, same speed, so it arrives late</text>
+<text x="16" y="166" font-size="12.5" fill="#cfcfcf" font-weight="700">graded index</text>
+<rect x="16" y="176" width="486" height="76" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.2"/>
+<rect x="16" y="186" width="486" height="56" fill="#2f3a41"/>
+<rect x="16" y="194" width="486" height="40" fill="#354349"/>
+<rect x="16" y="202" width="486" height="24" fill="#3f5560"/>
+<path d="M16 214 Q65 186 114 214 Q163 242 212 214 Q261 186 310 214 Q359 242 408 214 Q457 186 492 210" fill="none" stroke="#7fdb9b" stroke-width="2"/>
+<line x1="16" y1="214" x2="502" y2="214" stroke="#7fd1ff" stroke-width="2"/>
+<text x="512" y="212" font-size="11" fill="#7fdb9b">≈ on time</text>
+<text x="320" y="270" font-size="11.5" fill="#8d8d8d" text-anchor="middle">brightest = highest index = slowest glass, so the outer rays run faster and catch up</text>
+</g>
+</svg>
 
 "very nearly" is doing work in that sentence. the cancellation is never perfect, and what's left over is the **modal bandwidth**, quoted in MHz·km. that number is the entire spec sheet for multimode fiber.
 
@@ -137,15 +177,38 @@ that trade is the entire reason multimode still exists.
 
 shrink the core until only one spatial mode fits.
 
-```
-        8-9 um core
-          <--->
-    +-------------------------+
-    |         -------         |    125 um cladding
-    |         one mode        |    (same as multimode, deliberately)
-    |         -------         |
-    +-------------------------+
-```
+<svg viewBox="0 0 640 226" width="100%" style="max-width:640px;margin:26px auto;display:block" role="img" aria-label="Singlemode fiber cross section with an 8.2 micron core, and the mode field profile spilling into the cladding">
+<g font-family="'Open Sans',Helvetica,sans-serif">
+<defs>
+<radialGradient id="mfd" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#7fd1ff" stop-opacity="0.85"/>
+<stop offset="45%" stop-color="#4a7f9c" stop-opacity="0.5"/>
+<stop offset="100%" stop-color="#3f5560" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="84" cy="102" r="68" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<circle cx="84" cy="102" r="17" fill="url(#mfd)"/>
+<circle cx="84" cy="102" r="6" fill="none" stroke="#7fd1ff" stroke-width="1.4"/>
+<text x="84" y="188" text-anchor="middle" font-size="11" fill="#8d8d8d">8.2 µm core in 125 µm cladding</text>
+<rect x="212" y="34" width="200" height="136" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.2"/>
+<line x1="212" y1="86" x2="412" y2="86" stroke="#7fd1ff" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="212" y1="118" x2="412" y2="118" stroke="#7fd1ff" stroke-width="1" stroke-dasharray="4 4"/>
+<path d="M224 166 C242 164 256 150 268 128 C282 100 288 50 312 50 C336 50 342 100 356 128 C368 150 382 164 400 166 Z" fill="url(#mfd)" stroke="#7fd1ff" stroke-width="1.6"/>
+<text x="312" y="28" text-anchor="middle" font-size="11" fill="#7fd1ff">LP01 mode</text>
+<line x1="268" y1="150" x2="356" y2="150" stroke="#9fe8f5" stroke-width="1"/>
+<line x1="268" y1="145" x2="268" y2="155" stroke="#9fe8f5" stroke-width="1"/>
+<line x1="356" y1="145" x2="356" y2="155" stroke="#9fe8f5" stroke-width="1"/>
+<text x="312" y="144" text-anchor="middle" font-size="10.5" fill="#9fe8f5">MFD</text>
+<text x="222" y="80" font-size="9.5" fill="#8d8d8d">core</text>
+<text x="222" y="112" font-size="9.5" fill="#8d8d8d">edge</text>
+<text x="440" y="72" font-size="12" fill="#cfcfcf">the mode is wider than the core</text>
+<text x="440" y="94" font-size="11" fill="#8d8d8d">a real fraction of the power rides</text>
+<text x="440" y="110" font-size="11" fill="#8d8d8d">in the cladding, which is why the</text>
+<text x="440" y="126" font-size="11" fill="#8d8d8d">spec is mode field diameter and</text>
+<text x="440" y="142" font-size="11" fill="#8d8d8d">not core diameter</text>
+<text x="320" y="206" text-anchor="middle" font-size="11.5" fill="#8d8d8d">mismatch two of these at a splice → loss, or a phantom gainer on the OTDR</text>
+</g>
+</svg>
 
 the core is about 8.2 µm across, and the mode field diameter — the number that's actually on the spec sheet — is 9.2 µm at 1310 nm and about 10.4 µm at 1550. cladding is 125 µm, the same outside diameter as multimode, so connectors and splicers are common hardware.
 
@@ -212,15 +275,31 @@ for classical intensity-modulated links, nobody cares — the receiver measures 
 
 you can't get rid of birefringence. so you overwhelm it.
 
-```
-      PANDA                    bow-tie              elliptical clad
-   +-------------+          +-------------+        +-------------+
-   |  ()  o  ()  |          |  \\  o  //  |        |   (  o  )   |
-   |             |          |  //     \\  |        |             |
-   +-------------+          +-------------+        +-------------+
-    boron-doped              stress zones           elliptical
-    stress rods              reach closer           stress layer
-```
+<svg viewBox="0 0 640 250" width="100%" style="max-width:640px;margin:26px auto;display:block" role="img" aria-label="Three polarization maintaining fiber designs: PANDA, bow-tie and elliptical clad, with fast and slow axes marked">
+<g font-family="'Open Sans',Helvetica,sans-serif">
+<text x="106" y="20" text-anchor="middle" font-size="13" fill="#cfcfcf" font-weight="700">PANDA</text>
+<circle cx="106" cy="112" r="72" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<circle cx="48" cy="112" r="26" fill="#8a6fd6" opacity="0.75"/>
+<circle cx="164" cy="112" r="26" fill="#8a6fd6" opacity="0.75"/>
+<circle cx="106" cy="112" r="9" fill="#3f5560" stroke="#7fd1ff" stroke-width="1.5"/>
+<line x1="26" y1="112" x2="186" y2="112" stroke="#ffd479" stroke-width="1.2" stroke-dasharray="5 4"/>
+<line x1="106" y1="32" x2="106" y2="192" stroke="#7fdb9b" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="196" y="110" font-size="10.5" fill="#ffd479">slow</text>
+<text x="106" y="206" text-anchor="middle" font-size="10.5" fill="#7fdb9b">fast</text>
+<text x="106" y="232" text-anchor="middle" font-size="11" fill="#8d8d8d">boron-doped stress rods</text>
+<text x="320" y="20" text-anchor="middle" font-size="13" fill="#cfcfcf" font-weight="700">bow-tie</text>
+<circle cx="320" cy="112" r="72" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<path d="M320 112 L252 74 L252 150 Z" fill="#8a6fd6" opacity="0.75"/>
+<path d="M320 112 L388 74 L388 150 Z" fill="#8a6fd6" opacity="0.75"/>
+<circle cx="320" cy="112" r="9" fill="#3f5560" stroke="#7fd1ff" stroke-width="1.5"/>
+<text x="320" y="232" text-anchor="middle" font-size="11" fill="#8d8d8d">stress reaches closer, so more of it</text>
+<text x="534" y="20" text-anchor="middle" font-size="13" fill="#cfcfcf" font-weight="700">elliptical clad</text>
+<circle cx="534" cy="112" r="72" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<ellipse cx="534" cy="112" rx="54" ry="26" fill="#8a6fd6" opacity="0.7"/>
+<circle cx="534" cy="112" r="9" fill="#3f5560" stroke="#7fd1ff" stroke-width="1.5"/>
+<text x="534" y="232" text-anchor="middle" font-size="11" fill="#8d8d8d">asymmetric stress layer</text>
+</g>
+</svg>
 
 two rods of boron-doped glass on either side of the core. boron glass has a different thermal expansion coefficient from silica, so when the preform cools from the draw, the rods shrink more and squeeze the core along one axis. that permanent stress makes the fiber **strongly birefringent by design** — a slow axis and a fast axis, with a large, fixed index difference between them.
 
@@ -287,15 +366,45 @@ every connector has to be rotationally keyed, every splice has to be angle-align
 
 several separate cores inside one cladding.
 
-```
-      4-core                        7-core
-   +-------------+              +-------------+
-   |   o     o   |              |   o  o      |
-   |             |              | o   o   o   |     125 or 200 um
-   |   o     o   |              |   o  o      |     cladding
-   +-------------+              +-------------+
-     pitch ~50 um                pitch 35-42 um
-```
+<svg viewBox="0 0 640 268" width="100%" style="max-width:640px;margin:26px auto;display:block" role="img" aria-label="Four core and seven core multicore fiber layouts, showing core pitch, trench assistance and adjacent versus diagonal crosstalk">
+<g font-family="'Open Sans',Helvetica,sans-serif">
+<text x="120" y="20" text-anchor="middle" font-size="13" fill="#cfcfcf" font-weight="700">4-core</text>
+<circle cx="120" cy="122" r="86" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<g>
+<circle cx="86" cy="88" r="19" fill="none" stroke="#4a4a4a" stroke-width="7"/>
+<circle cx="154" cy="88" r="19" fill="none" stroke="#4a4a4a" stroke-width="7"/>
+<circle cx="86" cy="156" r="19" fill="none" stroke="#4a4a4a" stroke-width="7"/>
+<circle cx="154" cy="156" r="19" fill="none" stroke="#4a4a4a" stroke-width="7"/>
+</g>
+<circle cx="86" cy="88" r="9" fill="#3f5560" stroke="#7fd1ff" stroke-width="1.5"/>
+<circle cx="154" cy="88" r="9" fill="#3f5560" stroke="#7fd1ff" stroke-width="1.5"/>
+<circle cx="86" cy="156" r="9" fill="#3f5560" stroke="#7fd1ff" stroke-width="1.5"/>
+<circle cx="154" cy="156" r="9" fill="#3f5560" stroke="#7fd1ff" stroke-width="1.5"/>
+<path d="M96 88 L144 88" stroke="#ff8f7a" stroke-width="2"/>
+<path d="M94 96 L146 148" stroke="#7fdb9b" stroke-width="2" stroke-dasharray="4 4"/>
+<text x="120" y="62" text-anchor="middle" font-size="10.5" fill="#ff8f7a">adjacent: worst</text>
+<text x="120" y="230" text-anchor="middle" font-size="10.5" fill="#7fdb9b">diagonal: the quiet seat</text>
+<text x="120" y="250" text-anchor="middle" font-size="11" fill="#8d8d8d">pitch ~50 µm, 125 µm cladding</text>
+<text x="386" y="20" text-anchor="middle" font-size="13" fill="#cfcfcf" font-weight="700">7-core</text>
+<circle cx="386" cy="122" r="86" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<g fill="#3f5560" stroke="#7fd1ff" stroke-width="1.5">
+<circle cx="386" cy="122" r="9"/><circle cx="386" cy="76" r="9"/><circle cx="386" cy="168" r="9"/>
+<circle cx="346" cy="99" r="9"/><circle cx="346" cy="145" r="9"/>
+<circle cx="426" cy="99" r="9"/><circle cx="426" cy="145" r="9"/>
+</g>
+<text x="386" y="250" text-anchor="middle" font-size="11" fill="#8d8d8d">pitch 35 - 42 µm, higher density, more crosstalk</text>
+<g font-size="11.5">
+<circle cx="500" cy="80" r="9" fill="none" stroke="#4a4a4a" stroke-width="5"/>
+<circle cx="500" cy="80" r="4.5" fill="#3f5560" stroke="#7fd1ff" stroke-width="1.2"/>
+<text x="516" y="84" font-size="11.5" fill="#cfcfcf">trench assistance</text>
+<text x="490" y="110" font-size="10.5" fill="#8d8d8d">a moat of down-doped</text>
+<text x="490" y="126" font-size="10.5" fill="#8d8d8d">glass round each core,</text>
+<text x="490" y="142" font-size="10.5" fill="#8d8d8d">cutting the evanescent</text>
+<text x="490" y="158" font-size="10.5" fill="#8d8d8d">tail before it reaches</text>
+<text x="490" y="174" font-size="10.5" fill="#8d8d8d">the neighbour</text>
+</g>
+</g>
+</svg>
 
 the pitch — the centre to centre spacing — is the whole design problem. cores too close and they talk to each other. cores too far and you can't fit enough in a standard 125 µm cladding, and if you go to a 200 µm cladding you've given up on existing cable, connector and splicing infrastructure.
 
@@ -353,17 +462,42 @@ standardization is live rather than settled: ITU-T G Supplement 87 covers space 
 
 get rid of the glass core entirely.
 
-```
-    +---------------------------+
-    |    __      __      __     |
-    |   (  )    (  )    (  )    |     thin glass membranes,
-    |    __              __     |     nested, not touching
-    |   (  )    AIR     (  )    |
-    |    __      __      __     |     light travels in the hole
-    |   (  )    (  )    (  )    |
-    +---------------------------+
-        nested antiresonant nodeless fiber (NANF)
-```
+<svg viewBox="0 0 640 314" width="100%" style="max-width:640px;margin:26px auto;display:block" role="img" aria-label="Hollow core nested antiresonant nodeless fiber cross section, showing the air core surrounded by nested glass capillaries">
+<defs>
+<radialGradient id="airglow" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#0e3a44"/><stop offset="100%" stop-color="#0a2028"/>
+</radialGradient>
+</defs>
+<g font-family="'Open Sans',Helvetica,sans-serif">
+<circle cx="185" cy="150" r="128" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.5"/>
+<circle cx="185" cy="150" r="62" fill="url(#airglow)"/>
+<g fill="none" stroke="#9fe8f5" stroke-width="2.4">
+<circle cx="185" cy="46" r="42"/><circle cx="275" cy="98" r="42"/>
+<circle cx="275" cy="202" r="42"/><circle cx="185" cy="254" r="42"/>
+<circle cx="95" cy="202" r="42"/><circle cx="95" cy="98" r="42"/>
+</g>
+<g fill="none" stroke="#4fb3c7" stroke-width="1.8">
+<circle cx="185" cy="60" r="28"/><circle cx="263" cy="105" r="28"/>
+<circle cx="263" cy="195" r="28"/><circle cx="185" cy="240" r="28"/>
+<circle cx="107" cy="195" r="28"/><circle cx="107" cy="105" r="28"/>
+</g>
+<text x="185" y="145" text-anchor="middle" font-size="17" font-weight="700" fill="#7fd1ff">AIR</text>
+<text x="185" y="166" text-anchor="middle" font-size="11" fill="#6f9fb0">n ≈ 1.0003</text>
+<g font-size="12.5" fill="#cfcfcf">
+<line x1="330" y1="66" x2="300" y2="86" stroke="#666"/>
+<text x="338" y="62">outer capillary</text>
+<text x="338" y="80" font-size="11" fill="#8d8d8d">under a micron of glass</text>
+<line x1="330" y1="150" x2="291" y2="150" stroke="#666"/>
+<text x="338" y="146">nested capillary</text>
+<text x="338" y="164" font-size="11" fill="#8d8d8d">suppresses leakage to the cladding</text>
+<line x1="330" y1="236" x2="243" y2="215" stroke="#666"/>
+<text x="338" y="232">nodeless</text>
+<text x="338" y="250" font-size="11" fill="#8d8d8d">they never touch — a contact point</text>
+<text x="338" y="266" font-size="11" fill="#8d8d8d">is a resonance, and a resonance leaks</text>
+</g>
+<text x="185" y="296" text-anchor="middle" font-size="11.5" fill="#8d8d8d">~30 µm air core in a 125 µm cladding</text>
+</g>
+</svg>
 
 a ring of thin glass capillaries, each with a smaller capillary nested inside it, surrounding an air hole roughly 30 µm across. the membranes are under a micron thick. **nodeless** means the capillaries don't touch each other — contact points create resonances that leak light, so the geometry is designed to avoid them. **DNANF** adds a second nested layer.
 
