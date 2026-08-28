@@ -14,7 +14,7 @@ then, at the end, the part that made me want to write this: what changes when th
 
 ## the one job
 
-every fiber is doing the same job. **keep light travelling in a straight line for a distance where it would otherwise spread out and leave.**
+every fiber is doing the same job. keep light travelling in a straight line for a distance where it would otherwise spread out and leave.
 
 there are only two ways anyone has found to do this well.
 
@@ -38,11 +38,11 @@ there are only two ways anyone has found to do this well.
 <text x="548" y="100" font-size="12" fill="#7fd1ff">core</text>
 <text x="548" y="116" font-size="10.5" fill="#8d8d8d">n = 1.4492</text>
 <text x="371" y="198" text-anchor="middle" font-size="11.5" fill="#8d8d8d">shallow enough angle → it reflects instead of escaping</text>
-<text x="371" y="24" text-anchor="middle" font-size="11.5" fill="#8d8d8d">Δn = 0.36 %, and that is the entire trick</text>
+<text x="371" y="24" text-anchor="middle" font-size="11.5" fill="#8d8d8d">Δn = 0.36 %, and that is all it takes</text>
 </g>
 </svg>
 
-the index difference is tiny. for standard singlemode it's about **0.36%**. that's the whole trick — a fraction of a percent of germanium doping in the core is what holds the internet together.
+the index difference is tiny. for standard singlemode it's about 0.36%. a fraction of a percent of germanium doping in the core is what holds the internet together.
 
 **antiresonance.** don't use a core at all. put the light in air and surround it with thin glass membranes tuned so that light hitting them is reflected rather than transmitted. this is hollow core, and it's the odd one out. more on it later.
 
@@ -57,7 +57,7 @@ a **mode** is a field pattern that can travel down the fiber without changing sh
     V > 2.405   ->   many modes    (multimode), roughly V^2 / 2 of them
 ```
 
-`a` is the core radius. that's it, that's the entire fork in the road.
+`a` is the core radius. and that single number is the fork in the road.
 
 plug in a 50 µm core with NA 0.2 at 850 nm and you get **V ≈ 37**, so several hundred modes. plug in an 8.2 µm core with NA 0.12 at 1550 nm and you get **V ≈ 2.0**, so one.
 
@@ -95,12 +95,12 @@ fat core, so light has room to take many paths.
 
 the important detail is not the diameter, it's the **index profile**. there are two:
 
-- **step index** — uniform core index, sharp jump at the cladding. rays zig-zag. cheap and awful, essentially obsolete for data.
-- **graded index** — the index is highest at the centre and falls off as a parabola toward the cladding. this is what every modern MMF is.
+- **step index**, a uniform core index with a sharp jump at the cladding. rays zig-zag. cheap and awful, essentially obsolete for data.
+- **graded index**, where the index is highest at the centre and falls off as a parabola toward the cladding. this is what every modern MMF is.
 
 ## how light travels
 
-in a step index fiber, a ray bouncing at a steep angle travels a physically longer path than one going straight down the middle. same speed, longer path, later arrival. fire a sharp pulse in and a smeared blob comes out. this is **modal dispersion** and it is brutal — it's what limits step index MMF to a few tens of megabits over any useful distance.
+in a step index fiber, a ray bouncing at a steep angle travels a physically longer path than one going straight down the middle. same speed, longer path, later arrival. fire a sharp pulse in and a smeared blob comes out. this is **modal dispersion** and it is brutal. it's what limits step index MMF to a few tens of megabits over any useful distance.
 
 graded index is the fix, and it's elegant. because the index falls off toward the edges, the outer rays spend their time in *faster* glass. they take a longer route at a higher speed. instead of zig-zagging they follow smooth sinusoidal curves, and the two effects very nearly cancel:
 
@@ -113,7 +113,7 @@ graded index is the fix, and it's elegant. because the index falls off toward th
 <line x1="16" y1="66" x2="502" y2="66" stroke="#7fd1ff" stroke-width="2"/>
 <text x="512" y="58" font-size="11" fill="#7fd1ff">on time</text>
 <text x="512" y="76" font-size="11" fill="#ff9f6e">late</text>
-<text x="320" y="122" font-size="11.5" fill="#8d8d8d" text-anchor="middle">uniform core index — longer path, same speed, so it arrives late</text>
+<text x="320" y="122" font-size="11.5" fill="#8d8d8d" text-anchor="middle">uniform core index: longer path, same speed, so it arrives late</text>
 <text x="16" y="166" font-size="12.5" fill="#cfcfcf" font-weight="700">graded index</text>
 <rect x="16" y="176" width="486" height="76" fill="#2b2b2b" stroke="#5a5a5a" stroke-width="1.2"/>
 <rect x="16" y="186" width="486" height="56" fill="#2f3a41"/>
@@ -126,7 +126,7 @@ graded index is the fix, and it's elegant. because the index falls off toward th
 </g>
 </svg>
 
-"very nearly" is doing work in that sentence. the cancellation is never perfect, and what's left over is the **modal bandwidth**, quoted in MHz·km. that number is the entire spec sheet for multimode fiber.
+"very nearly" is doing work in that sentence. the cancellation is never perfect, and what's left over is the **modal bandwidth**, quoted in MHz·km. that number is most of what a multimode datasheet is telling you.
 
 ## the grades
 
@@ -145,7 +145,7 @@ graded index is the fix, and it's elegant. because the index falls off toward th
 </table>
 </div>
 
-two things about that table. the bandwidth column is **effective modal bandwidth**, measured with a laser launch — you'll also see overfilled launch numbers quoted (1500 and 3500 for OM3 and OM4), which are measured with an LED and are the wrong number for a VCSEL link. and the 100G column is SR4; the older SR10 goes further because it spreads the rate over ten lanes.
+two things about that table. the bandwidth column is **effective modal bandwidth**, measured with a laser launch. you'll also see overfilled launch numbers quoted (1500 and 3500 for OM3 and OM4), which are measured with an LED and are the wrong number for a VCSEL link. and the 100G column is SR4; the older SR10 goes further because it spreads the rate over ten lanes.
 
 OM3 onward are **laser optimized**: the index profile is manufactured to match how a VCSEL actually fills the fiber, which is not how an LED fills it. this is why you can't just swap an OM1 patch cord into a 10G link and hope.
 
@@ -153,15 +153,15 @@ OM5 adds characterized bandwidth at 953 nm so you can run **SWDM**, four wavelen
 
 ## the deal
 
-**you're buying cheap transceivers and paying in distance.** a big core is easy to couple into, so you can use a VCSEL — a laser that costs a few dollars, runs at low power and is easy to align. a singlemode transceiver needs a precisely aligned narrow-linewidth source and costs multiples of that.
+you're buying cheap transceivers and paying in distance. a big core is easy to couple into, so you can use a VCSEL, a laser that costs a few dollars, runs at low power and is easy to align. a singlemode transceiver needs a precisely aligned narrow-linewidth source and costs multiples of that.
 
-that trade is the entire reason multimode still exists.
+that trade is why multimode still exists at all.
 
 ## use it for
 
 - **inside a building or a data center hall**, under ~150 m at high rates
 - **server to top-of-rack, and rack to spine**, where you're buying hundreds of transceivers and the price difference is the budget
-- **anything where the link count is large and the distance is small**
+- anything where the link count is large and the distance is small
 
 ## don't use it for
 
@@ -210,17 +210,17 @@ shrink the core until only one spatial mode fits.
 </g>
 </svg>
 
-the core is about 8.2 µm across, and the mode field diameter — the number that's actually on the spec sheet — is 9.2 µm at 1310 nm and about 10.4 µm at 1550. cladding is 125 µm, the same outside diameter as multimode, so connectors and splicers are common hardware.
+the core is about 8.2 µm across, and the mode field diameter (the number that's actually on the spec sheet) is 9.2 µm at 1310 nm and about 10.4 µm at 1550. cladding is 125 µm, the same outside diameter as multimode, so connectors and splicers are common hardware.
 
 ## how light travels
 
-there's no useful ray picture here, because the core is only about six wavelengths across. what propagates is a single field distribution, the **LP01 mode**, and it isn't confined to the core — a meaningful fraction of the power travels in the cladding. that's why the spec is *mode field diameter* and not core diameter, and why splicing two fibers with mismatched MFD produces loss and phantom gainers on an OTDR trace.
+there's no useful ray picture here, because the core is only about six wavelengths across. what propagates is a single field distribution, the **LP01 mode**, and it isn't confined to the core, and a meaningful fraction of the power travels in the cladding. that's why the spec is *mode field diameter* and not core diameter, and why splicing two fibers with mismatched MFD produces loss and phantom gainers on an OTDR trace.
 
 with modal dispersion gone, three things are left to limit you:
 
-- **attenuation** — 0.32-0.35 dB/km at 1310, 0.17-0.20 dB/km at 1550. ultra low loss pure-silica-core fiber reaches **0.14 dB/km**, which is roughly the floor for glass; below that you're fighting Rayleigh scattering off the atomic structure of silica itself.
-- **chromatic dispersion** — different wavelengths travel at slightly different speeds. about **17 ps/nm/km** at 1550 in G.652. this is what limits high rate links, and it's correctable in the DSP of a coherent transceiver.
-- **polarization mode dispersion (PMD)** — see the next section, because this is where PM fiber comes from.
+- **attenuation**. 0.32-0.35 dB/km at 1310, 0.17-0.20 dB/km at 1550. ultra low loss pure-silica-core fiber reaches **0.14 dB/km**, which is roughly the floor for glass; below that you're fighting Rayleigh scattering off the atomic structure of silica itself.
+- **chromatic dispersion**, which is different wavelengths travelling at slightly different speeds. about **17 ps/nm/km** at 1550 in G.652. this is what limits high rate links, and it's correctable in the DSP of a coherent transceiver.
+- **polarization mode dispersion (PMD)**, which gets the next section to itself, because this is where PM fiber comes from.
 
 ## the grades
 
@@ -243,7 +243,7 @@ with modal dispersion gone, three things are left to limit you:
 
 ## the deal
 
-**you're paying for transceivers and getting distance and headroom.** the fiber itself is cheap, often cheaper than multimode by the metre. the cost is at the ends.
+you're paying for transceivers and getting distance and headroom. the fiber itself is cheap, often cheaper than multimode by the metre. the cost is at the ends.
 
 but the fiber is also *future proof in a way multimode never is*: the same G.652 in the ground carried 2.5G, then 10G, then 100G coherent, then 400G, and will carry 800G. the glass didn't change. only the boxes did.
 
@@ -252,7 +252,7 @@ but the fiber is also *future proof in a way multimode never is*: the same G.652
 - **anything outside a building.** access, metro, long haul, subsea, FTTH.
 - **any run over ~150 m**, and increasingly any run at all in new data centers.
 - **anything you want to wavelength-multiplex.** the C band gives you ~80 channels on one fiber pair.
-- **the default for quantum links over deployed infrastructure**, because it's what's already in the ground.
+- the default for quantum links over deployed infrastructure, because it's what's already in the ground.
 
 ---
 
@@ -260,16 +260,16 @@ but the fiber is also *future proof in a way multimode never is*: the same G.652
 
 ## the problem it solves
 
-here's the thing nobody tells you when they say "singlemode carries one mode": it carries one *spatial* mode, but that mode has **two polarization states**. in a perfect, perfectly circular, perfectly unstressed fiber those two states travel at exactly the same speed and nothing happens.
+when people say "singlemode carries one mode" they are leaving something out. it carries one *spatial* mode, but that mode has **two polarization states**. in a perfect, perfectly circular, perfectly unstressed fiber those two states travel at exactly the same speed and nothing happens.
 
 no real fiber is like that. the core is slightly elliptical, the cable is bent, it's squeezed in a duct, the sun heats one side of an aerial span. every one of those imposes a small, random, *time-varying* birefringence. the two polarization components pick up random relative phase and exchange energy as they go.
 
 the consequences:
 
-- **PMD** — the two components arrive at different times, smearing the pulse. small, but it accumulates as sqrt(distance) and it's a real limit on old fiber at high rates.
-- **the output polarization is unpredictable and drifts.** point a linearly polarized laser into a spool of SMF and what comes out is some arbitrary elliptical state that changes when someone walks past the rack.
+- **PMD**. the two components arrive at different times, smearing the pulse. small, but it accumulates as sqrt(distance) and it's a real limit on old fiber at high rates.
+- the output polarization is unpredictable and drifts. point a linearly polarized laser into a spool of SMF and what comes out is some arbitrary elliptical state that changes when someone walks past the rack.
 
-for classical intensity-modulated links, nobody cares — the receiver measures power. for coherent links, the DSP tracks and undoes it. **for anything that encodes information in polarization itself, this is fatal.**
+for classical intensity-modulated links, nobody cares, because the receiver measures power. for coherent links, the DSP tracks and undoes it. for anything that encodes information in polarization itself, this is fatal.
 
 ## the architecture
 
@@ -301,13 +301,13 @@ you can't get rid of birefringence. so you overwhelm it.
 </g>
 </svg>
 
-two rods of boron-doped glass on either side of the core. boron glass has a different thermal expansion coefficient from silica, so when the preform cools from the draw, the rods shrink more and squeeze the core along one axis. that permanent stress makes the fiber **strongly birefringent by design** — a slow axis and a fast axis, with a large, fixed index difference between them.
+two rods of boron-doped glass on either side of the core. boron glass has a different thermal expansion coefficient from silica, so when the preform cools from the draw, the rods shrink more and squeeze the core along one axis. that permanent stress makes the fiber **strongly birefringent by design**: a slow axis and a fast axis, with a large, fixed index difference between them.
 
 **bow-tie** shapes the stress zones to reach closer to the core, giving stronger birefringence. **elliptical clad** uses an asymmetric stress layer. PANDA is the one you'll actually buy.
 
 ## how light travels
 
-launch light polarized along one of the two axes — you align the connector key to it — and it stays there.
+launch light polarized along one of the two axes (you align the connector key to it) and it stays there.
 
 the reason is a coupling argument, not a confinement one. energy transfers between two modes efficiently only when they're phase matched. the built-in birefringence makes the two polarization modes so mismatched in propagation constant that a random perturbation can't push energy from one to the other before the phase relationship has scrambled. the built-in birefringence beats the random birefringence, so the random birefringence stops mattering.
 
@@ -319,9 +319,9 @@ the number that describes this is the **beat length**: the distance over which t
     PANDA at 1550 nm:  L_beat = 3 - 5 mm   ->   delta_n ~ 3-5 x 10^-4
 ```
 
-compare that to the ~10⁻⁷ of accidental birefringence in normal fiber, where the beat length is metres and moves around. you've made the deliberate effect thousands of times bigger than the accidental one. **that's the whole design.**
+compare that to the ~10⁻⁷ of accidental birefringence in normal fiber, where the beat length is metres and moves around. you've made the deliberate effect thousands of times bigger than the accidental one. the rest of the fiber is just packaging around that fact.
 
-launch off-axis, though, and you've excited both modes, and now that 3 mm beat length works against you — the output polarization spins wildly with temperature and wavelength. **PM fiber is unforgiving about alignment. that's not a defect, it's the same property viewed from the wrong side.**
+launch off-axis, though, and you've excited both modes, and now that 3 mm beat length works against you: the output polarization spins wildly with temperature and wavelength. PM fiber is unforgiving about alignment. that's not a defect, it's the same property viewed from the wrong side.
 
 ## the cost
 
@@ -350,13 +350,13 @@ every connector has to be rotationally keyed, every splice has to be angle-align
 - **inside instruments.** modulator and laser pigtails, interferometer arms, fiber optic gyroscopes.
 - **coherent detection front ends**, where the local oscillator has to arrive in a known state.
 - **fiber sensing**, particularly interferometric and Sagnac-based sensors.
-- **anything nonlinear** — frequency doubling, parametric sources — because the efficiency depends on polarization overlap.
-- **quantum optics benches and short quantum links.** this is the big one, and it gets its own section below.
+- **anything nonlinear**, like frequency doubling and parametric sources, because the efficiency depends on polarization overlap.
+- quantum optics benches and short quantum links. this is the big one, and it gets its own section below.
 
 ## don't use it for
 
 - **spans.** the loss and the PER degradation make it a losing proposition past a few hundred metres.
-- **anything where you can instead fix polarization at the receiver.** an active polarization controller with feedback is usually cheaper and better than a PM span.
+- anything where you can instead fix polarization at the receiver. an active polarization controller with feedback is usually cheaper and better than a PM span.
 
 ---
 
@@ -406,12 +406,12 @@ several separate cores inside one cladding.
 </g>
 </svg>
 
-the pitch — the centre to centre spacing — is the whole design problem. cores too close and they talk to each other. cores too far and you can't fit enough in a standard 125 µm cladding, and if you go to a 200 µm cladding you've given up on existing cable, connector and splicing infrastructure.
+the pitch, meaning the centre to centre spacing, is the hard part of the design. cores too close and they talk to each other. cores too far and you can't fit enough in a standard 125 µm cladding, and if you go to a 200 µm cladding you've given up on existing cable, connector and splicing infrastructure.
 
 two families:
 
-- **uncoupled (weakly coupled) MCF** — cores are deliberately isolated. each one is an independent singlemode channel. this is what's being standardized and deployed.
-- **coupled core MCF** — cores are close enough to couple on purpose, and the receiver untangles them with MIMO DSP, the same way wireless does. higher density, much harder receiver. research and specialist use.
+- **uncoupled (weakly coupled) MCF**. cores are deliberately isolated. each one is an independent singlemode channel. this is what's being standardized and deployed.
+- **coupled core MCF**. cores are close enough to couple on purpose, and the receiver untangles them with MIMO DSP, the same way wireless does. higher density, much harder receiver. research and specialist use.
 
 the trick that makes uncoupled MCF work is **trench assistance**: a ring of down-doped, low index glass around each core that acts as a moat, cutting the evanescent tail before it reaches the neighbour.
 
@@ -419,7 +419,7 @@ the trick that makes uncoupled MCF work is **trench assistance**: a ring of down
 
 in each core, exactly what happens in singlemode fiber. the interesting physics is what happens *between* cores.
 
-confinement is never total — the mode's field decays exponentially into the cladding but never reaches zero. if a neighbouring core is close enough to sit in that tail, and the two cores are phase matched, power transfers. this is **inter-core crosstalk**, and unlike most impairments it grows *linearly with length* and is very sensitive to bending, because bending shifts the effective indices and can accidentally phase-match two cores that were designed not to match.
+confinement is never total. the mode's field decays exponentially into the cladding but never reaches zero. if a neighbouring core is close enough to sit in that tail, and the two cores are phase matched, power transfers. this is **inter-core crosstalk**, and unlike most impairments it grows *linearly with length* and is very sensitive to bending, because bending shifts the effective indices and can accidentally phase-match two cores that were designed not to match.
 
 <div class="table-responsive">
 <table class="table table-bordered table-condensed" style="text-align:left">
@@ -435,7 +435,7 @@ confinement is never total — the mode's field decays exponentially into the cl
 </table>
 </div>
 
-that last row is not trivia. **which core you put a sensitive signal in is a design decision**, and the diagonal is the quiet seat.
+that last row is not trivia. which core you put a sensitive signal in is a design decision, and the diagonal is the quiet seat.
 
 ## the cost
 
@@ -452,7 +452,7 @@ standardization is live rather than settled: ITU-T G Supplement 87 covers space 
 - **capacity per cross section.** this is the real argument. a submarine cable's capacity is limited by the electrical power you can push down it and by the physical diameter of the cable, not by how much glass you can afford. four cores in one 125 µm strand is four times the capacity in the same space, sharing one amplifier pump.
 - **subsea and repeatered systems**, where multicore amplifiers let you pump all cores together.
 - **AI and data center interconnect**, where the bottleneck is increasingly the number of fibers you can physically terminate on a faceplate.
-- **quantum-classical coexistence.** see below — spatial isolation turns out to solve a problem that wavelength isolation can't.
+- **quantum-classical coexistence.** see below. spatial isolation turns out to solve a problem that wavelength isolation can't.
 
 ---
 
@@ -492,14 +492,14 @@ get rid of the glass core entirely.
 <text x="338" y="164" font-size="11" fill="#8d8d8d">suppresses leakage to the cladding</text>
 <line x1="330" y1="236" x2="243" y2="215" stroke="#666"/>
 <text x="338" y="232">nodeless</text>
-<text x="338" y="250" font-size="11" fill="#8d8d8d">they never touch — a contact point</text>
+<text x="338" y="250" font-size="11" fill="#8d8d8d">they never touch, and a contact point</text>
 <text x="338" y="266" font-size="11" fill="#8d8d8d">is a resonance, and a resonance leaks</text>
 </g>
 <text x="185" y="296" text-anchor="middle" font-size="11.5" fill="#8d8d8d">~30 µm air core in a 125 µm cladding</text>
 </g>
 </svg>
 
-a ring of thin glass capillaries, each with a smaller capillary nested inside it, surrounding an air hole roughly 30 µm across. the membranes are under a micron thick. **nodeless** means the capillaries don't touch each other — contact points create resonances that leak light, so the geometry is designed to avoid them. **DNANF** adds a second nested layer.
+a ring of thin glass capillaries, each with a smaller capillary nested inside it, surrounding an air hole roughly 30 µm across. the membranes are under a micron thick. **nodeless** means the capillaries don't touch each other, because contact points create resonances that leak light. so the geometry is designed to avoid them. **DNANF** adds a second nested layer.
 
 ## how light travels
 
@@ -513,7 +513,7 @@ what confines it is **antiresonance**. each thin glass membrane behaves like a F
     t = membrane thickness,  m = 1, 2, 3 ...
 ```
 
-the transmission windows are the gaps between those resonances. this has a consequence that matters enormously: **the guiding wavelength is set by one manufacturing dimension.** want a fiber that guides at 780 nm instead of 1550 nm? change the membrane thickness. you cannot do that with silica fiber, where the loss versus wavelength curve is a property of the material and you're stuck with it.
+the transmission windows are the gaps between those resonances. this has a consequence that matters enormously: the guiding wavelength is set by one manufacturing dimension. want a fiber that guides at 780 nm instead of 1550 nm? change the membrane thickness. you cannot do that with silica fiber, where the loss versus wavelength curve is a property of the material and you're stuck with it.
 
 over 99.9% of the power ends up in air. everything downstream follows from that.
 
@@ -531,16 +531,16 @@ over 99.9% of the power ends up in air. everything downstream follows from that.
 
 **nonlinearity, essentially gone.** the Kerr effect happens in glass. no glass, no Kerr. you can launch far more power without four-wave mixing and self-phase modulation eating the signal.
 
-**scattering, mostly gone.** Rayleigh scattering is a property of glass density fluctuations, and Brillouin and Raman scattering need glass to scatter off. this one is the sleeper — it turns out to matter more for quantum than the latency does.
+**scattering, mostly gone.** Rayleigh scattering is a property of glass density fluctuations, and Brillouin and Raman scattering need glass to scatter off. this one is the sleeper. it turns out to matter more for quantum than the latency does.
 
 **dispersion, very low and flat**, because it isn't material dispersion, it's waveguide dispersion in air.
 
-**loss.** this is where it got interesting recently. hollow core was a curiosity at 2.5 dB/km for years, which is fine for a 40 km trading route and useless for anything else. a DNANF from the Southampton group and Microsoft has now measured **0.091 dB/km at 1550 nm**, held across 18 THz of bandwidth. that is below the 0.14 dB/km practical floor of silica, the one set by Rayleigh scattering off the glass itself — the first time any fiber has beaten glass at its own game. field builds are in the hundreds to low thousands of kilometres, and the fiber you can actually buy is still some way behind the record, but the direction of travel is clear.
+**loss.** this got interesting recently. hollow core was a curiosity at 2.5 dB/km for years, which is fine for a 40 km trading route and useless for anything else. a DNANF from the Southampton group and Microsoft has now measured **0.091 dB/km at 1550 nm**, held across 18 THz of bandwidth. that is below the 0.14 dB/km practical floor of silica, the one set by Rayleigh scattering off the glass itself. it is the first time any fiber has beaten glass at its own game. field builds are in the hundreds to low thousands of kilometres, and the fiber you can actually buy is still some way behind the record, but the direction of travel is clear.
 
 ## what it costs
 
 - **splicing.** joining an air core to anything is genuinely hard, because the arc that fuses glass also collapses the capillary structure. splice losses run **0.3-0.6 dB** against under 0.05 dB for SMF. on a long link the splices can dominate the loss budget, which is a strange place to be.
-- **bending.** antiresonance is a resonant condition, so bending it doesn't degrade gracefully the way index guiding does — it shifts the guiding window. modern NANFs are much better than early designs, but don't assume G.657 habits transfer.
+- **bending.** antiresonance is a resonant condition, so bending it doesn't degrade gracefully the way index guiding does. it shifts the guiding window. modern NANFs are much better than early designs, but don't assume G.657 habits transfer.
 - **connectorization and test.** the ecosystem is young. your OTDR's IOR setting is about 1.0003, which is going to feel wrong the first time you type it.
 - **cost and availability.** manufacturing is ramping, not ramped.
 
@@ -609,7 +609,7 @@ this is where the choice stops being an optimization and starts being a constrai
 
 four things break at once.
 
-**you cannot amplify.** the no-cloning theorem isn't an engineering limitation you'll route around next year. an EDFA works by stimulated emission, and copying an unknown quantum state perfectly is forbidden — what a real amplifier does instead is add spontaneous emission noise, which is fine when you have 10⁶ photons per bit and catastrophic when you have one. so there is no repeater in the classical sense, and loss is not a budget item you top up. it's an exponential.
+**you cannot amplify.** the no-cloning theorem isn't an engineering limitation you'll route around next year. an EDFA works by stimulated emission, and copying an unknown quantum state perfectly is forbidden. what a real amplifier does instead is add spontaneous emission noise, which is fine when you have 10⁶ photons per bit and catastrophic when you have one. so there is no repeater in the classical sense, and loss is not a budget item you top up. it's an exponential.
 
 ```
     eta  =  10^( -alpha L / 10 )
@@ -618,9 +618,9 @@ four things break at once.
     HCF at 0.09 dB/km, 100 km  ->   9 dB  ->  13 photons in 100 survive
 ```
 
-**a 0.11 dB/km difference is a 13x difference in key rate at 100 km.** that's the whole reason people who don't care about latency at all still care about hollow core.
+a 0.11 dB/km difference is a 13x difference in key rate at 100 km, which is why people who don't care about latency at all still care about hollow core.
 
-**noise photons are not attenuated with your signal, they're generated along the way.** put a classical DWDM channel at +10 dBm in the same fiber as your quantum channel and spontaneous Raman scattering from the glass sprays photons across a hundred nanometres of spectrum. your detector cannot tell those from signal. a classical link with an OSNR problem loses a bit of margin; a quantum link with a Raman problem stops working entirely.
+noise photons are not attenuated with your signal, they're generated along the way. put a classical DWDM channel at +10 dBm in the same fiber as your quantum channel and spontaneous Raman scattering from the glass sprays photons across a hundred nanometres of spectrum. your detector cannot tell those from signal. a classical link with an OSNR problem loses a bit of margin; a quantum link with a Raman problem stops working entirely.
 
 **the encoding has to survive.** you're not sending intensity. depending on the protocol you're sending polarization states, time bins, or relative phase, and the fiber has to leave those alone or you have to actively undo what it did.
 
@@ -632,11 +632,11 @@ multimode is disqualified almost by definition. hundreds of modes means hundreds
 
 the exceptions are all short and all inside a box: collecting fluorescence from a trapped ion or an atom cloud, free-space link receivers where you're trying to catch a distorted wavefront and don't care about mode purity, some detector packaging.
 
-**for a quantum link between two places, multimode is not a candidate.**
+for a quantum link between two places, multimode is not a candidate.
 
 ## SMF : the one you'll actually use
 
-not because it's optimal, but because **it's in the ground.** the entire promise of fiber quantum networking is running quantum channels over infrastructure that already exists, and that infrastructure is G.652.
+not because it's optimal. it's because the stuff is already in the ground, and the promise of fiber quantum networking rests on running quantum channels over infrastructure that already exists. that infrastructure is G.652.
 
 what works well: **time-bin and phase encoding.** the fiber doesn't care much about relative delay between two temporal modes, so a photon in a superposition of "early" and "late" survives a long span with its encoding intact. this is why so many deployed QKD systems are time-bin or phase based rather than polarization based. fully controllable time-bin entangled states have been distributed over 100 km of ordinary singlemode.
 
@@ -656,29 +656,29 @@ what doesn't work well: **polarization encoding, without help.** the random bire
 </table>
 </div>
 
-the fix is active compensation, not special fiber: send a time-multiplexed classical reference through the same fiber, measure the transformation it suffered, and drive an inline polarization controller to invert it. a 62 km link that was 70% aerial — where fidelity fell below 95% in under 20 seconds unassisted — held above **98% fidelity with 92.8% uptime** once compensated.
+the fix is active compensation, not special fiber: send a time-multiplexed classical reference through the same fiber, measure the transformation it suffered, and drive an inline polarization controller to invert it. a 62 km link that was 70% aerial, where fidelity fell below 95% in under 20 seconds unassisted, held above **98% fidelity with 92.8% uptime** once compensated.
 
-that's the pattern to remember: **for deployed quantum links, you don't buy a better fiber, you buy a feedback loop.**
+that's the pattern to remember: for deployed quantum links, you don't buy a better fiber, you buy a feedback loop.
 
 ## PMF : essential, but not for the span
 
 PM fiber is everywhere in a quantum lab and almost nowhere between labs.
 
-**where it belongs:** inside the source and the receiver. an entangled photon source is a chain of components — pump laser, waveguide or crystal, filters, interferometer arms, modulators — where the polarization at each interface determines whether the thing works at all. a Sagnac-based entangled pair source has a loop whose two counter-propagating paths must stay polarization-defined. a phase modulator has a defined axis and does nothing useful off it. all of that is PM, patch by patch, keyed connector by keyed connector.
+**where it belongs:** inside the source and the receiver. an entangled photon source is a chain of components (pump laser, waveguide or crystal, filters, interferometer arms, modulators) where the polarization at each interface determines whether the thing works at all. a Sagnac-based entangled pair source has a loop whose two counter-propagating paths must stay polarization-defined. a phase modulator has a defined axis and does nothing useful off it. all of that is PM, patch by patch, keyed connector by keyed connector.
 
 **why it doesn't extend to the span:**
 
 - **0.5 dB/km against 0.2 dB/km.** over 50 km that's an extra 15 dB, which is a factor of 30 in key rate. you would be paying for polarization stability with the very thing polarization stability was supposed to buy you.
-- **extinction ratio degrades with length and temperature.** -30 dB at 100 m is excellent; over tens of kilometres in a duct with a diurnal temperature cycle, it's not the guarantee it looks like.
+- extinction ratio degrades with length and temperature. -30 dB at 100 m is excellent; over tens of kilometres in a duct with a diurnal temperature cycle, it's not the guarantee it looks like.
 - **there is no PM plant.** nobody has PM fiber in the ground, and nobody is going to install any.
 
-so the honest position is: **PMF for the metre scale, active compensation for the kilometre scale.** if you find yourself specifying a multi-kilometre PM span, check whether time-bin encoding would let you avoid the problem entirely.
+so it comes out as PMF for the metre scale and active compensation for the kilometre scale. if you find yourself specifying a multi-kilometre PM span, check whether time-bin encoding would let you avoid the problem entirely.
 
 ## MCF : the coexistence answer
 
-here's the problem multicore solves, and it's a good one.
+the problem multicore solves is a real one, and it is not the one you would guess.
 
-nobody is going to give a quantum network its own dark fiber plant. so quantum channels have to share fiber with classical traffic, and the usual way to share a fiber is wavelength — put the quantum channel at 1310 and the classical at 1550, or find a quiet slot in the C band. that helps, but it doesn't save you, because Raman scattering from a strong classical channel is *broadband*. there is no wavelength far enough away to be truly clean when the classical channel is at +10 dBm.
+nobody is going to give a quantum network its own dark fiber plant. so quantum channels have to share fiber with classical traffic, and the usual way to share a fiber is wavelength: put the quantum channel at 1310 and the classical at 1550, or find a quiet slot in the C band. that helps, but it doesn't save you, because Raman scattering from a strong classical channel is *broadband*. there is no wavelength far enough away to be truly clean when the classical channel is at +10 dBm.
 
 multicore replaces wavelength isolation with **spatial isolation**. put the quantum channel in its own core. the coupling between non-adjacent cores in uncoupled MCF is below -60 dB/km, which is isolation that wavelength filtering cannot approach.
 
@@ -686,7 +686,7 @@ it works. in a field deployed 4-core testbed in L'Aquila, a QKD channel ran in o
 
 two practical notes from that work:
 
-- **adjacent cores hurt, diagonal cores don't.** the diagonal core measured below -70 dB/km coupling and contributed essentially nothing. so: **put the quantum channel diagonally opposite the loudest classical core.** core assignment is a design parameter.
+- **adjacent cores hurt, diagonal cores don't.** the diagonal core measured below -70 dB/km coupling and contributed essentially nothing. so: put the quantum channel diagonally opposite the loudest classical core. core assignment is a design parameter.
 - when very high classical launch power is the requirement, MCF beats hollow core, because the spatial isolation scales with power in a way that spectral separation doesn't. one study puts tolerable classical power at **over 30 dBm per channel** with MCF against about 17 dBm with HCF when quantum and classical share a band.
 
 there's a second, subtler use: **phase-stable synchronization**. distributed quantum protocols need shared timing references, and running the reference and the quantum signal in cores of the same fiber means they experience nearly the same environment, so the differential drift is tiny. sub-femtosecond stabilization across a multicore fiber has been demonstrated at 100% duty cycle.
@@ -695,9 +695,9 @@ there's a second, subtler use: **phase-stable synchronization**. distributed qua
 
 hollow core's quantum advantages are not the ones the marketing leads with. latency is nice. these are better.
 
-**1. Raman noise essentially disappears.** spontaneous Raman scattering needs glass. take the glass out of the light path and the dominant noise mechanism for quantum-classical coexistence goes with it. in a four node entanglement network over 11.5 km of NANF carrying four 200 Gbps classical channels alongside, accidental coincidences ran at **0.0075 per second per bin**. the same setup in standard SMF would have given **0.4** — roughly two orders of magnitude worse — and entanglement visibility would have collapsed from **94.3% to 14.4%**. not degraded. gone.
+**1. Raman noise essentially disappears.** spontaneous Raman scattering needs glass. take the glass out of the light path and the dominant noise mechanism for quantum-classical coexistence goes with it. in a four node entanglement network over 11.5 km of NANF carrying four 200 Gbps classical channels alongside, accidental coincidences ran at **0.0075 per second per bin**. the same setup in standard SMF would have given 0.4, roughly two orders of magnitude worse, and entanglement visibility would have collapsed from 94.3% to 14.4%. that is not a degraded measurement so much as no measurement.
 
-**2. it guides where silica doesn't.** this one is underrated and might matter most. a lot of quantum hardware does not emit at 1550 nm. rubidium memories work at 780 and 795 nm. quantum dots emit around 930-980 nm. silica fiber at those wavelengths is bad — 1.7 dB/km at 930 nm, several dB/km in the visible — because Rayleigh scattering scales as 1/λ⁴ and there's nothing you can do about it.
+**2. it guides where silica doesn't.** this one is underrated and might matter most of all. a lot of quantum hardware does not emit at 1550 nm. rubidium memories work at 780 and 795 nm. quantum dots emit around 930-980 nm. silica fiber at those wavelengths is bad, 1.7 dB/km at 930 nm and several dB/km in the visible, because Rayleigh scattering scales as 1/λ⁴ and there's nothing you can do about it.
 
 hollow core doesn't have that constraint, because the guiding window is set by a membrane thickness rather than by the material:
 
@@ -717,15 +717,15 @@ hollow core doesn't have that constraint, because the guiding window is set by a
 </table>
 </div>
 
-the silica column is what you'd actually get from an HP-series short-wavelength fiber, not the theoretical Rayleigh floor. the shape is what matters: **silica loss climbs as 1/λ⁴ going down in wavelength, and hollow core just doesn't.**
+the silica column is what you'd actually get from an HP-series short-wavelength fiber, not the theoretical Rayleigh floor. the shape is what matters: silica loss climbs as 1/λ⁴ going down in wavelength, and hollow core just doesn't.
 
-the alternative is **quantum frequency conversion** — a nonlinear crystal that shifts your 930 nm photon to 1550 nm so it can use telecom fiber. that works, and it's a real technique, but it costs you a conversion setup at each end and it costs you photons. being able to skip it changes the architecture. all four BB84 polarization states have been sent through 340 m of HCF at 934 nm with **0.1% QBER**, alongside strong classical traffic at 1550 nm in the same fiber, with single photon indistinguishability preserved at 92.7% HOM visibility.
+the alternative is **quantum frequency conversion**, a nonlinear crystal that shifts your 930 nm photon to 1550 nm so it can use telecom fiber. that works, and it's a real technique, but it costs you a conversion setup at each end and it costs you photons. being able to skip it changes the architecture. all four BB84 polarization states have been sent through 340 m of HCF at 934 nm with **0.1% QBER**, alongside strong classical traffic at 1550 nm in the same fiber, with single photon indistinguishability preserved at 92.7% HOM visibility.
 
-**3. low birefringence, so polarization survives better.** less glass and a more symmetric structure means less stress birefringence, so polarization encoding drifts less than in SMF. HCF isn't polarization maintaining — it doesn't have a defined axis — but it's a quieter channel to run polarization through.
+3. low birefringence, so polarization survives better. less glass and a more symmetric structure means less stress birefringence, so polarization encoding drifts less than in SMF. HCF isn't polarization maintaining, since it has no defined axis, but it's a quieter channel to run polarization through.
 
 **4. latency as a rate multiplier.** in a repeater chain, the attempt rate for entanglement swapping is set by the round trip time to the midpoint. cutting 32% off the propagation delay directly raises how many attempts per second you get before your memory decoheres. this is a real effect, not a marketing one, and it compounds along a chain.
 
-**the catch:** those 0.85-0.98 dB/km numbers in the network demonstration are what real deployed hollow core looked like recently, not 0.091. the record fiber and the fiber you can buy are not the same fiber yet, and the splice losses are still 0.3-0.6 dB a joint. **for now, hollow core wins on noise and on wavelength access, and it will win on loss later.**
+**the catch:** those 0.85-0.98 dB/km numbers in the network demonstration are what real deployed hollow core looked like recently, not 0.091. the record fiber and the fiber you can buy are not the same fiber yet, and the splice losses are still 0.3-0.6 dB a joint. for now, hollow core wins on noise and on wavelength access, and it will win on loss later.
 
 ## the quantum summary
 
@@ -750,23 +750,23 @@ the alternative is **quantum frequency conversion** — a nonlinear crystal that
 
 **singlemode** is the default for everything else, and the reason is that one strand of it has carried every generation of transceiver anyone has invented and will carry the next one.
 
-**PM fiber** solves polarization by making the fiber so birefringent that the random birefringence stops mattering. it's a component, not a medium — think metres.
+**PM fiber** solves polarization by making the fiber so birefringent that the random birefringence stops mattering. it's a component, not a medium. think metres.
 
 **multicore** buys capacity per square millimetre, which matters when your limit is cable diameter or faceplate space rather than glass cost. it also happens to be the cleanest way to put quantum and classical traffic in the same cable.
 
 **hollow core** takes the glass out of the light path, and everything that was a property of glass goes with it: the speed penalty, the nonlinearity, the Raman scattering, and the wavelength window you were stuck with.
 
-for quantum specifically, the ranking flips depending on what's hurting you. **loss-limited? hollow core.** **noise-limited from classical neighbours? multicore, or hollow core.** **encoding-limited? change the encoding before you change the fiber.** and if you're building at the metre scale on a bench, it's PM fiber all the way down, and it always will be.
+for quantum specifically, the ranking flips depending on what's hurting you. **loss-limited? hollow core.** noise-limited from classical neighbours? multicore, or hollow core. encoding-limited? change the encoding before you change the fiber. and if you're building at the metre scale on a bench, it's PM fiber all the way down, and it always will be.
 
 ## where the numbers came from
 
 most of the classical figures are standard datasheet and ITU-T values. the research results are worth reading in full if any of this is your job:
 
-- hollow core at 0.091 dB/km — [Southampton / Microsoft, reported in Nature Photonics](https://www.networkworld.com/article/4049666/microsofts-hollow-core-fiber-delivers-the-lowest-signal-loss-ever.html)
-- hollow core loss from 600 to 1100 nm — [Nature Communications, "Hollow core optical fibres with comparable attenuation to silica fibres between 600 and 1100 nm"](https://www.nature.com/articles/s41467-020-19910-7)
-- four node entanglement network over NANF, with the Raman noise comparison — [npj Quantum Information](https://www.nature.com/articles/s41534-025-01125-7)
-- quantum dot photons at 934 nm over hollow core, avoiding frequency conversion — [arXiv 2509.11889](https://arxiv.org/html/2509.11889)
-- QKD plus 110.8 Tb/s over a field deployed 4-core fiber in L'Aquila — [Light: Science & Applications](https://www.nature.com/articles/s41377-025-01982-z)
-- the MCF-versus-HCF coexistence comparison and launch power limits — [Entropy 26(7), 601](https://www.mdpi.com/1099-4300/26/7/601)
-- entanglement over a 62 km polarization-stabilized aerial link — [arXiv 2601.11753](https://arxiv.org/html/2601.11753)
-- multicore practicalities, FIFO, splicing, IEC 61300-3-55 — [Senko multicore fiber application note](https://www.senko.com/wp-content/uploads/2026/05/Application-Note_Multicore-Fibers.pdf)
+- hollow core at 0.091 dB/km: [Southampton / Microsoft, reported in Nature Photonics](https://www.networkworld.com/article/4049666/microsofts-hollow-core-fiber-delivers-the-lowest-signal-loss-ever.html)
+- hollow core loss from 600 to 1100 nm: [Nature Communications, "Hollow core optical fibres with comparable attenuation to silica fibres between 600 and 1100 nm"](https://www.nature.com/articles/s41467-020-19910-7)
+- four node entanglement network over NANF, with the Raman noise comparison: [npj Quantum Information](https://www.nature.com/articles/s41534-025-01125-7)
+- quantum dot photons at 934 nm over hollow core, avoiding frequency conversion: [arXiv 2509.11889](https://arxiv.org/html/2509.11889)
+- QKD plus 110.8 Tb/s over a field deployed 4-core fiber in L'Aquila: [Light: Science & Applications](https://www.nature.com/articles/s41377-025-01982-z)
+- the MCF-versus-HCF coexistence comparison and launch power limits: [Entropy 26(7), 601](https://www.mdpi.com/1099-4300/26/7/601)
+- entanglement over a 62 km polarization-stabilized aerial link: [arXiv 2601.11753](https://arxiv.org/html/2601.11753)
+- multicore practicalities, FIFO, splicing, IEC 61300-3-55: [Senko multicore fiber application note](https://www.senko.com/wp-content/uploads/2026/05/Application-Note_Multicore-Fibers.pdf)
