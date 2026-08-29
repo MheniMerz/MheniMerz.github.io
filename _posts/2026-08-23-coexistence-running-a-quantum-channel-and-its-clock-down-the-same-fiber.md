@@ -56,6 +56,8 @@ which says something useful. **your clock jitter only needs to be small compared
 
 so: picoseconds, not because picoseconds are impressive, but because the photons are picoseconds long.
 
+<div class="qw" id="qw-hom" data-qw><div class="qw-hd"><span class="qw-t">how much clock jitter a HOM measurement tolerates</span><span class="qw-s">I = 1 / &radic;(1 + &delta;t&sup2; / 2&sigma;&sup2;). only the ratio of jitter to photon duration matters.</span></div><div class="qw-ctl"><div class="qw-g"><span class="qw-l">measured in the paper</span><span class="qw-b" data-grp="ps"><button type="button" data-v="2.18">White Rabbit, 2.18 ps</button><button type="button" data-v="3.5">pulsed laser, 3.5 ps</button><button type="button" data-v="0.1">PL averaged, 100 fs</button></span></div></div><div class="qw-sl"><label class="qw-sr"><span class="qw-l">clock jitter <span class="qw-gk">&delta;t</span> <b id="qwh-dtv">10.0 ps</b></span><input type="range" id="qwh-dt" min="0" max="60" step="0.1" value="10"></label><label class="qw-sr"><span class="qw-l">photon duration <span class="qw-gk">&sigma;</span> <b id="qwh-sgv">10.0 ps</b></span><input type="range" id="qwh-sg" min="2" max="25" step="0.5" value="10"></label></div><div class="qw-two"><div class="qw-pane"><span class="qw-pl">the two photons arriving</span><svg class="qw-svg" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Two photon wavepackets offset in time"><g id="qwh-pulse"></g></svg></div><div class="qw-pane"><span class="qw-pl">indistinguishability vs jitter</span><svg class="qw-svg" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Indistinguishability versus clock jitter"><g id="qwh-curve"></g></svg></div></div><div class="qw-out"><div class="qw-oi"><span class="qw-ok">indistinguishability</span><span class="qw-ov" id="qwh-I">0.816</span></div><div class="qw-oi qw-grow"><span class="qw-ok">verdict</span><span class="qw-ov qw-txt" id="qwh-v">&mdash;</span></div></div><p class="qw-n" id="qwh-note"></p><noscript><p class="qw-n">For the ~10 ps photons the paper considers, 2.18 ps of jitter (White Rabbit) gives I = 0.988, 5 ps gives 0.943, 10 ps gives 0.816 and 40 ps gives 0.333. Because only the ratio &delta;t/&sigma; enters, longer photons tolerate proportionally more jitter.</p></noscript></div>
+
 ### how you tell if it worked
 
 one number recurs in this paper: **g<sup>(2)</sup>(0)**, the second order coherence at zero delay. treat it as a purity score for the light.
@@ -95,13 +97,15 @@ if your sync protocol is bidirectional, which White Rabbit is, you get both at b
 
 the paper builds a small model for this and it produces two behaviors worth memorizing, at fixed launch power.
 
-**BS saturates.** noise generated near the far end has to travel all the way back, and gets attenuated doing it, so it contributes almost nothing. past roughly 10 km, adding fiber stops adding backscatter noise. the curve flattens at `P_in · β_BS / (α_s + α_n)`.
+**BS saturates.** noise generated near the far end has to travel all the way back, and gets attenuated doing it, so it contributes almost nothing. the curve flattens out at `P_in · β_BS / (α_s + α_n)`, and it approaches that ceiling gradually: for a 1310 nm sync signal it is at 68% of the ceiling by 10 km and 90% by 20 km. past that, more fiber barely adds any backscatter.
 
 **FS peaks and then falls.** forward-scattered noise has to survive the rest of the fiber too, and so does the signal generating it. past about 20 km the FS noise at the far receiver actually goes *down* with length.
 
 which is a better result than you'd expect: **a longer link is not automatically a noisier link.** the noise floor stops climbing while the signal keeps falling, so the problem at long distance is that you're losing photons, not that you're gaining noise.
 
 with one caveat that turns out to matter. that's all at fixed *launch* power. in a real link you set the launch power to hit a required *received* power, so as the fiber gets longer you turn the transmitter up, and then the BS noise doesn't saturate at all. it tracks whatever you had to do to keep the classical receiver alive. this is exactly why receiver sensitivity ends up setting the reach limit at the end of this post.
+
+<div class="qw" id="qw-noise" data-qw><div class="qw-hd"><span class="qw-t">background noise in the 1550 nm quantum channel</span><span class="qw-s">the paper's own model, Eqs. 2, 3 and 6. hover or tap the chart to read values.</span><span class="qw-lg"><i style="background:#32c29e"></i>back-scattered (BS)<i style="background:#f2a03d"></i>forward-scattered (FS)</span></div><div class="qw-ctl"><div class="qw-g"><span class="qw-l">sync wavelength</span><span class="qw-b" data-grp="wl"><button type="button" data-v="1270">1270</button><button type="button" data-v="1310" class="on" aria-pressed="true">1310</button><button type="button" data-v="1330">1330</button><button type="button" data-v="1490">1490 nm</button></span></div><div class="qw-g"><span class="qw-l">hold constant</span><span class="qw-b" data-grp="md"><button type="button" data-v="in" class="on" aria-pressed="true">launch power</button><button type="button" data-v="out">received power</button></span></div></div><svg class="qw-svg" viewBox="0 0 640 330" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Background noise versus fiber length"><g id="qwn-grid"></g><g id="qwn-curves"></g><g id="qwn-cross"></g></svg><div class="qw-out"><div class="qw-oi"><span class="qw-ok">at</span><span class="qw-ov" id="qwn-L">25.0 km</span></div><div class="qw-oi"><span class="qw-ok qw-bs">back-scattered</span><span class="qw-ov" id="qwn-bs">&mdash;</span></div><div class="qw-oi"><span class="qw-ok qw-fs">forward-scattered</span><span class="qw-ov" id="qwn-fs">&mdash;</span></div></div><p class="qw-n" id="qwn-note"></p><noscript><p class="qw-n">At a fixed launch power of 10<sup>14</sup> photons/s into a 100 GHz channel at 1547.72 nm, back-scattered noise reaches 68% of its ceiling by 10 km and 90% by 20 km, while forward-scattered noise peaks between 18 and 24 km (depending on the sync wavelength) and falls after that. Holding the <em>received</em> power fixed instead removes the ceiling entirely. Switching the sync wavelength from 1490 nm to 1270 nm drops both curves by about 60x.</p></noscript></div>
 
 ## the testbed
 
@@ -226,3 +230,284 @@ so with today's equipment, sharing the fiber costs you nothing in reach. it save
 - with parts you can buy, this works to about 100 km. which is about as far as a repeaterless quantum link goes anyway.
 
 the thing I keep coming back to is how much of this is ordinary fiber engineering. detuning, filtering, launch power, receiver sensitivity, link budget. the quantum part sets the requirements, and then the requirements get met with WDM modules and a careful look at where every dB went.
+
+{% raw %}<style>
+.qw{text-align:left;background:#191919;border:1px solid #333;border-radius:6px;padding:18px 18px 14px;margin:28px 0;font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:1.5;color:#e6e6e6;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.qw *{box-sizing:border-box}
+.qw-hd{margin-bottom:14px}
+.qw-t{display:block;font-size:14px;font-weight:600;color:#fff;letter-spacing:.01em}
+.qw-s{display:block;font-size:12px;color:#8f8f8f;margin-top:3px}
+.qw-lg{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;font-size:11.5px;color:#b4b4b4;align-items:center}
+.qw-lg i{display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.qw-ctl{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:12px}
+.qw-g{display:flex;flex-direction:column;gap:5px}
+.qw-l{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8f8f8f}
+.qw-gk{text-transform:none;font-size:12px}
+.qw-l b{text-transform:none}
+.qw-l b{color:#32c29e;font-weight:600;font-variant-numeric:tabular-nums}
+.qw-b{display:inline-flex;flex-wrap:wrap;gap:4px}
+.qw-b button{font:inherit;font-size:12px;line-height:1;padding:7px 11px;background:#242424;color:#c8c8c8;border:1px solid #3a3a3a;border-radius:4px;cursor:pointer;transition:background .12s,color .12s,border-color .12s}
+.qw-b button:hover{background:#2e2e2e;color:#fff}
+.qw-b button.on{background:#32c29e;border-color:#32c29e;color:#10231f;font-weight:600}
+.qw-b button:focus-visible{outline:2px solid #32c29e;outline-offset:2px}
+.qw-sl{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:12px}
+.qw-sr{flex:1 1 220px;display:flex;flex-direction:column;gap:6px;cursor:pointer}
+.qw-sr input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:#3a3a3a;border-radius:2px;outline:none;margin:4px 0}
+.qw-sr input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:15px;height:15px;border-radius:50%;background:#32c29e;cursor:grab;border:0}
+.qw-sr input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:#32c29e;cursor:grab;border:0}
+.qw-sr input[type=range]:focus-visible{outline:2px solid #32c29e;outline-offset:4px}
+.qw-svg{display:block;width:100%;height:auto;overflow:visible}
+.qw-two{display:flex;flex-wrap:wrap;gap:14px}
+.qw-pane{flex:1 1 260px;min-width:0}
+.qw-pl{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8f8f8f;margin-bottom:4px}
+.qw-out{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.qw-oi{flex:0 1 auto;min-width:120px;background:#212121;border:1px solid #303030;border-radius:4px;padding:7px 10px}
+.qw-grow{flex:1 1 200px}
+.qw-ok{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#8f8f8f}
+.qw-ok.qw-bs{color:#32c29e}
+.qw-ok.qw-fs{color:#f2a03d}
+.qw-ov{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;color:#fff;margin-top:2px;font-variant-numeric:tabular-nums}
+.qw-ov sup{font-size:9px}
+.qw-ov.qw-txt{font-family:inherit;font-size:13px;font-weight:600}
+.qw-n{font-size:12px;color:#9a9a9a;margin:11px 0 0;line-height:1.55}
+.qw-n b{color:#cfcfcf;font-weight:600}
+@media(max-width:600px){.qw{padding:14px 12px 12px}.qw-ctl{gap:12px}}
+</style>
+<script>
+(function(){
+  var HC = 6.62607015e-34 * 299792458;
+  function ak(a){ return a * Math.LN10 / 10 / 1000; }         // dB/km -> 1/m
+  var AN = ak(0.17), DNU = 1e11, PIN = 1e14, POUT_W = 1e-6;
+  var W = {
+    1270:{as:ak(0.34), bs:0.061e-23, fs:0.058e-23},
+    1310:{as:ak(0.32), bs:0.449e-23, fs:0.421e-23},
+    1330:{as:ak(0.28), bs:0.745e-23, fs:0.699e-23},
+    1490:{as:ak(0.19), bs:3.75e-23,  fs:3.69e-23}
+  };
+  function noise(lam, L, mode){
+    var w = W[lam], as = w.as, bs, fs, P;
+    if (mode === 'in') {
+      P = PIN;
+      bs = (1 - Math.exp(-(as+AN)*L)) * w.bs * DNU * P / (as+AN);
+      fs = (Math.exp(-AN*L) - Math.exp(-as*L)) * w.fs * DNU * P / (as-AN);
+    } else {
+      P = POUT_W / (HC / (lam*1e-9));
+      bs = (Math.exp(as*L) - Math.exp(-AN*L)) * w.bs * DNU * P / (as+AN);
+      fs = (Math.exp((as-AN)*L) - 1) * w.fs * DNU * P / (as-AN);
+    }
+    return [bs, fs];
+  }
+  // ---- shared helpers ----
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, txt){
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (txt != null) e.textContent = txt;
+    return e;
+  }
+  function clear(g){ while (g.firstChild) g.removeChild(g.firstChild); }
+  function sup(v){
+    if (!(v > 0)) return '0';
+    var e = Math.floor(Math.log10(v)), m = v / Math.pow(10, e);
+    return m.toFixed(1) + ' × 10<sup>' + e + '</sup>';
+  }
+  // Stop Hammer.js (bound to #post for swipe navigation) from seeing drags
+  // that belong to these widgets. Bubble-phase stopPropagation on the
+  // gesture-start events is enough; never preventDefault, or range inputs die.
+  function shield(node){
+    ['pointerdown','touchstart','mousedown','touchmove'].forEach(function(ev){
+      node.addEventListener(ev, function(e){ e.stopPropagation(); }, {passive:true});
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-qw]'), shield);
+  function btnGroup(root, grp, cb){
+    var wrap = root.querySelector('[data-grp="'+grp+'"]');
+    if (!wrap) return;
+    wrap.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b) return;
+      Array.prototype.forEach.call(wrap.children, function(x){
+        x.classList.remove('on'); x.removeAttribute('aria-pressed');
+      });
+      b.classList.add('on'); b.setAttribute('aria-pressed','true');
+      cb(b.getAttribute('data-v'));
+    });
+  }
+  // ============ widget 1 : noise vs fiber length ============
+  var N = document.getElementById('qw-noise');
+  if (N) (function(){
+    var GX=62, GY=14, GW=562, GH=252, LMAX=80, Y0=3, Y1=7;  // y decades, reset per mode
+    var gGrid=N.querySelector('#qwn-grid'), gCur=N.querySelector('#qwn-curves'),
+        gCross=N.querySelector('#qwn-cross'), svg=N.querySelector('.qw-svg');
+    var st={lam:1310, md:'in', L:25000};
+    function px(km){ return GX + (km/LMAX)*GW; }
+    function py(v){
+      var t = (Math.log(Math.max(v,1e-12))/Math.LN10 - Y0)/(Y1-Y0);
+      return GY + (1 - Math.min(Math.max(t,0),1))*GH;
+    }
+    function grid(){
+      clear(gGrid);
+      for (var d=Y0; d<=Y1; d++){
+        var y=py(Math.pow(10,d));
+        gGrid.appendChild(el('line',{x1:GX,y1:y,x2:GX+GW,y2:y,stroke:'#2e2e2e','stroke-width':1}));
+        var t=el('text',{x:GX-9,y:y+4,'text-anchor':'end',fill:'#7d7d7d','font-size':10});
+        t.appendChild(el('tspan',{},'10'));
+        t.appendChild(el('tspan',{dy:-4,'font-size':7.5}, String(d)));
+        gGrid.appendChild(t);
+      }
+      for (var km=0; km<=LMAX; km+=20){
+        var x=px(km);
+        gGrid.appendChild(el('line',{x1:x,y1:GY,x2:x,y2:GY+GH,stroke:'#282828','stroke-width':1}));
+        gGrid.appendChild(el('text',{x:x,y:GY+GH+18,'text-anchor':'middle',fill:'#7d7d7d','font-size':10}, km));
+      }
+      gGrid.appendChild(el('text',{x:GX+GW/2,y:GY+GH+34,'text-anchor':'middle',fill:'#8f8f8f','font-size':11},'fiber length, km'));
+      var yl=el('text',{x:0,y:0,'text-anchor':'middle',fill:'#8f8f8f','font-size':11,
+        transform:'translate(13,'+(GY+GH/2)+') rotate(-90)'},'noise, photons/s');
+      gGrid.appendChild(yl);
+    }
+    function path(which){
+      var d='', first=true;
+      for (var km=0; km<=LMAX; km+=0.4){
+        var v=noise(st.lam, km*1000, st.md)[which];
+        if (!(v > Math.pow(10,Y0))) continue;   // start the curve at the axis floor
+        d += (first?'M':'L') + px(km).toFixed(1) + ' ' + py(v).toFixed(1);
+        first=false;
+      }
+      return d;
+    }
+    function draw(){
+      clear(gCur);
+      gCur.appendChild(el('path',{d:path(0),fill:'none',stroke:'#32c29e','stroke-width':2.2,
+        'stroke-linejoin':'round','stroke-linecap':'round'}));
+      gCur.appendChild(el('path',{d:path(1),fill:'none',stroke:'#f2a03d','stroke-width':2.2,
+        'stroke-linejoin':'round','stroke-linecap':'round'}));
+      cross();
+    }
+    function cross(){
+      clear(gCross);
+      var km=st.L/1000, x=px(km), v=noise(st.lam, st.L, st.md);
+      gCross.appendChild(el('line',{x1:x,y1:GY,x2:x,y2:GY+GH,stroke:'#6a6a6a','stroke-width':1,'stroke-dasharray':'3 3'}));
+      [[v[0],'#32c29e'],[v[1],'#f2a03d']].forEach(function(p){
+        if (p[0]>0) {
+          gCross.appendChild(el('circle',{cx:x,cy:py(p[0]),r:4.5,fill:p[1],stroke:'#191919','stroke-width':1.5}));
+        }
+      });
+      N.querySelector('#qwn-L').textContent = km.toFixed(1) + ' km';
+      N.querySelector('#qwn-bs').innerHTML = sup(v[0]);
+      N.querySelector('#qwn-fs').innerHTML = sup(v[1]);
+    }
+    function note(){
+      var w=W[st.lam], pk=Math.log(w.as/AN)/(w.as-AN)/1000;
+      var sat20=100*(1-Math.exp(-(w.as+AN)*20000)), sat10=100*(1-Math.exp(-(w.as+AN)*10000));
+      var n;
+      if (st.md==='in'){
+        n = 'At a fixed launch power of 10<sup>14</sup> photons/s, back-scattered noise runs into a ceiling: it is at <b>'
+          + sat10.toFixed(0) + '%</b> of that ceiling by 10 km and <b>' + sat20.toFixed(0)
+          + '%</b> by 20 km. Forward-scattered noise peaks at <b>' + pk.toFixed(1)
+          + ' km</b> and falls after that, because past the peak the fiber attenuates the noise and the signal making it faster than new noise accumulates.';
+      } else {
+        n = 'Holding the <em>received</em> power at 1 &micro;W is what a real link does, and it removes the ceiling. '
+          + 'To deliver the same 1 &micro;W over a longer fiber you have to launch more power, so both curves keep climbing. '
+          + 'This is why receiver sensitivity, not the noise physics, sets the reach limit.';
+      }
+      N.querySelector('#qwn-note').innerHTML = n;
+    }
+    function all(){
+      if (st.md==='in'){ Y0=3; Y1=7; } else { Y0=2; Y1=8; }
+      grid(); draw(); note();
+    }
+    btnGroup(N,'wl',function(v){ st.lam=+v; all(); });
+    btnGroup(N,'md',function(v){ st.md=v;  all(); });
+    function pick(e){
+      var r=svg.getBoundingClientRect(), cx=(e.touches?e.touches[0].clientX:e.clientX);
+      var km=((cx-r.left)/r.width*640 - GX)/GW*LMAX;
+      st.L = Math.min(Math.max(km,0),LMAX)*1000;
+      cross();
+    }
+    var down=false;
+    svg.addEventListener('pointerdown',function(e){down=true;pick(e);});
+    svg.addEventListener('pointermove',function(e){ if(down||e.pointerType==='mouse') pick(e); });
+    window.addEventListener('pointerup',function(){down=false;});
+    svg.style.cursor='crosshair';
+    all();
+  })();
+  // ============ widget 2 : HOM indistinguishability ============
+  var H = document.getElementById('qw-hom');
+  if (H) (function(){
+    var dt=H.querySelector('#qwh-dt'), sg=H.querySelector('#qwh-sg');
+    var gP=H.querySelector('#qwh-pulse'), gC=H.querySelector('#qwh-curve');
+    function I(d,s){ return 1/Math.sqrt(1 + d*d/(2*s*s)); }
+    function pulses(d,s){
+      clear(gP);
+      var X0=10, X1=310, Y0=14, Y1=140, T=100;   // +-100 ps
+      var tx=function(t){ return X0+(t+T)/(2*T)*(X1-X0); };
+      var ty=function(v){ return Y1-v*(Y1-Y0); };
+      gP.appendChild(el('line',{x1:X0,y1:Y1,x2:X1,y2:Y1,stroke:'#3a3a3a','stroke-width':1}));
+      [-100,-50,0,50,100].forEach(function(t){
+        gP.appendChild(el('line',{x1:tx(t),y1:Y1,x2:tx(t),y2:Y1+4,stroke:'#3a3a3a','stroke-width':1}));
+        gP.appendChild(el('text',{x:tx(t),y:Y1+16,'text-anchor':'middle',fill:'#7d7d7d','font-size':9},t));
+      });
+      gP.appendChild(el('text',{x:(X0+X1)/2,y:Y1+32,'text-anchor':'middle',fill:'#8f8f8f','font-size':10},'arrival time, ps'));
+      [[-d/2,'#32c29e'],[d/2,'#f2a03d']].forEach(function(p){
+        var dd='M'+tx(-T)+' '+Y1;
+        for (var t=-T;t<=T;t+=1.5){
+          dd+='L'+tx(t).toFixed(1)+' '+ty(Math.exp(-Math.pow(t-p[0],2)/(2*s*s))).toFixed(1);
+        }
+        dd+='L'+tx(T)+' '+Y1+'Z';
+        gP.appendChild(el('path',{d:dd,fill:p[1],'fill-opacity':.22,stroke:p[1],'stroke-width':1.8}));
+      });
+      if (d>0.5){
+        var yA=Y0-2;
+        gP.appendChild(el('line',{x1:tx(-d/2),y1:yA,x2:tx(d/2),y2:yA,stroke:'#8f8f8f','stroke-width':1}));
+        gP.appendChild(el('text',{x:(tx(-d/2)+tx(d/2))/2,y:yA-4,'text-anchor':'middle',fill:'#9a9a9a','font-size':9.5},'δt = '+d.toFixed(1)+' ps'));
+      }
+    }
+    function curve(d,s){
+      clear(gC);
+      var X0=34, X1=310, Y0=14, Y1=140, DM=60;
+      var cx=function(v){ return X0+v/DM*(X1-X0); };
+      var cy=function(v){ return Y1-v*(Y1-Y0); };
+      [0,0.5,1].forEach(function(v){
+        gC.appendChild(el('line',{x1:X0,y1:cy(v),x2:X1,y2:cy(v),stroke:v===0.5?'#4a3a2a':'#2e2e2e','stroke-width':1,'stroke-dasharray':v===0.5?'4 3':''}));
+        gC.appendChild(el('text',{x:X0-7,y:cy(v)+4,'text-anchor':'end',fill:'#7d7d7d','font-size':9},v.toFixed(1)));
+      });
+      [0,20,40,60].forEach(function(t){
+        gC.appendChild(el('text',{x:cx(t),y:Y1+16,'text-anchor':'middle',fill:'#7d7d7d','font-size':9},t));
+      });
+      gC.appendChild(el('text',{x:(X0+X1)/2,y:Y1+32,'text-anchor':'middle',fill:'#8f8f8f','font-size':10},'clock jitter δt, ps'));
+      gC.appendChild(el('text',{x:X0+4,y:cy(0.5)-5,fill:'#a8823f','font-size':9},'I = 0.5'));
+      var dd='';
+      for (var t=0;t<=DM;t+=0.5) dd+=(t?'L':'M')+cx(t).toFixed(1)+' '+cy(I(t,s)).toFixed(1);
+      gC.appendChild(el('path',{d:dd,fill:'none',stroke:'#32c29e','stroke-width':2.2,'stroke-linecap':'round'}));
+      if (d<=DM) gC.appendChild(el('circle',{cx:cx(d),cy:cy(I(d,s)),r:4.5,fill:'#fff',stroke:'#32c29e','stroke-width':2}));
+    }
+    function verdict(v){
+      if (v>=0.98) return ['essentially perfect','#32c29e'];
+      if (v>=0.90) return ['fine, barely costs you anything','#32c29e'];
+      if (v>=0.75) return ['usable, starting to show','#d8c257'];
+      if (v>=0.50) return ['measurably degraded','#f2a03d'];
+      return ['the photons are telling on each other','#e2603f'];
+    }
+    function upd(){
+      var d=+dt.value, s=+sg.value, v=I(d,s), vd=verdict(v);
+      H.querySelector('#qwh-dtv').textContent = d.toFixed(1)+' ps';
+      H.querySelector('#qwh-sgv').textContent = s.toFixed(1)+' ps';
+      H.querySelector('#qwh-I').textContent = v.toFixed(3);
+      var ve=H.querySelector('#qwh-v'); ve.textContent=vd[0]; ve.style.color=vd[1];
+      pulses(d,s); curve(d,s);
+      H.querySelector('#qwh-note').innerHTML =
+        'Jitter of <b>'+d.toFixed(1)+' ps</b> against a <b>'+s.toFixed(1)+
+        ' ps</b> photon gives a ratio &delta;t/&sigma; of <b>'+(d/s).toFixed(2)+
+        '</b>. Slide the photon duration and watch the curve stretch: a longer photon tolerates proportionally more jitter, which is why the paper can call anything under 10 ps good enough for its ~10 ps pulses.';
+    }
+    function clearPresets(){
+      Array.prototype.forEach.call(H.querySelectorAll('[data-grp="ps"] button'), function(b){
+        b.classList.remove('on'); b.removeAttribute('aria-pressed');
+      });
+    }
+    dt.addEventListener('input',function(){ clearPresets(); upd(); });
+    sg.addEventListener('input',upd);
+    btnGroup(H,'ps',function(v){ dt.value=v; upd(); });
+    upd();
+  })();
+})();
+</script>{% endraw %}
