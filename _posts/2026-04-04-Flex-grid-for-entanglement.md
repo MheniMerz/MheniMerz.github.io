@@ -148,7 +148,7 @@ it also swapped the metric. instead of coincidence rate, links are rated by **lo
 
 [Alshowkan et al., "Advanced architectures for high-performance quantum networking," *JOCN* 14, 493 (2022)](https://opg.optica.org/jocn/abstract.cfm?uri=jocn-14-6-493) replaced GPS with White Rabbit switches between the three nodes, and added a QKD channel to secure the classical control traffic that runs the instruments. measured fidelities of 0.938 to 0.971 and entanglement rates of 19.6 to 145 ebits/s on the allocated channels.
 
-if you read [the coexistence post]({% post_url 2026-08-23-coexistence-running-a-quantum-channel-and-its-clock-down-the-same-fiber %}), that is the same White Rabbit, doing the same job, and the wavelength-choice argument in that post applies directly to this architecture.
+if you read [the coexistence post]({% post_url 2026-03-23-coexistence-running-a-quantum-channel-and-its-clock-down-the-same-fiber %}), that is the same White Rabbit, doing the same job, and the wavelength-choice argument in that post applies directly to this architecture.
 
 ### the source got much wider
 
@@ -204,7 +204,7 @@ here is what i think is still missing. some of these are small and some are not.
 
 **7. treat the slice width as a clock decision too.** this one seems under-stated in the literature.
 
-a narrower slice is a longer photon. that is just the transform limit. and from [the coexistence post]({% post_url 2026-08-23-coexistence-running-a-quantum-channel-and-its-clock-down-the-same-fiber %}), the indistinguishability of two photons meeting at a beamsplitter for entanglement swapping depends only on the ratio of clock jitter to photon duration:
+a narrower slice is a longer photon. that is just the transform limit. and from [the coexistence post]({% post_url 2026-03-23-coexistence-running-a-quantum-channel-and-its-clock-down-the-same-fiber %}), the indistinguishability of two photons meeting at a beamsplitter for entanglement swapping depends only on the ratio of clock jitter to photon duration:
 
 ```
     I  =  1 / sqrt( 1 + δt² / 2σ² )

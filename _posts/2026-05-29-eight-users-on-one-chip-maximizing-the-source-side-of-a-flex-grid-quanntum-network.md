@@ -18,7 +18,7 @@ below: how much spectrum a network actually needs, what the chip provides, what 
 
 ## what the switch is spending
 
-quick recap, and [the previous post]({% post_url 2026-08-30-Flex-grid-for-entanglement %}) has the long version. a source in the middle makes photon pairs, and the two photons of a pair always add up in energy to the pump:
+quick recap, and [the previous post]({% post_url 2026-04-04-Flex-grid-for-entanglement %}) has the long version. a source in the middle makes photon pairs, and the two photons of a pair always add up in energy to the pump:
 
 ```
     ω_signal  +  ω_idler  =  ω_pump
@@ -178,7 +178,7 @@ the paper is good and it is honest about most of this. some of what follows is a
 
 **the propagation time problem is named and left.** in a real session each user's N−1 channels land on one detector, and each of those channels has a different delay through the switch and the fiber. so either you open one wide coincidence window and eat the extra noise, or you equalize the delays per channel. the paper points at [Joshi et al.'s supplement](https://doi.org/10.1126/sciadv.aba0959) for the fix and does not implement it. with 28 links at 50 GHz that means 28 delays to measure and 28 to compensate, per user, and it has to hold while the fiber moves.
 
-**there is no clock, because there did not need to be.** every detector was in the same lab on the same TDC. the synchronization problem that [the coexistence post]({% post_url 2026-08-23-coexistence-running-a-quantum-channel-and-its-clock-down-the-same-fiber %}) is about does not appear anywhere in this paper, and neither does classical traffic in the same fiber. both of those turn up as soon as the spools are replaced by real glass.
+**there is no clock, because there did not need to be.** every detector was in the same lab on the same TDC. the synchronization problem that [the coexistence post]({% post_url 2026-03-23-coexistence-running-a-quantum-channel-and-its-clock-down-the-same-fiber %}) is about does not appear anywhere in this paper, and neither does classical traffic in the same fiber. both of those turn up as soon as the spools are replaced by real glass.
 
 ## what i'd build next
 
@@ -190,7 +190,7 @@ the paper is good and it is honest about most of this. some of what follows is a
 
 every flex-grid allocator in the literature optimizes coincidence rate, or ebits per second, or fidelity. all three are smooth functions of allocated bandwidth. **secret key after finite-size correction is not.** below a threshold rate a link produces exactly zero secret key at any block size you are willing to wait for, and just above it the return on an extra GHz is enormous. that discontinuity changes what an optimal allocation looks like: there are allocations that maximize total ebits and produce no key on any link, and allocations that produce less entanglement and more key.
 
-it also turns admission control from a policy preference into a hard constraint, which is the thing i said was missing in [the flex-grid post]({% post_url 2026-08-30-Flex-grid-for-entanglement %}). a solver that knows about block sizes can tell a user at request time that their link is infeasible, and can offer them a longer block instead of nothing.
+it also turns admission control from a policy preference into a hard constraint, which is the thing i said was missing in [the flex-grid post]({% post_url 2026-04-04-Flex-grid-for-entanglement %}). a solver that knows about block sizes can tell a user at request time that their link is infeasible, and can offer them a longer block instead of nothing.
 
 **4. publish η² Δ per link, not brightness.** the honest figure of merit for a distribution network is the product of the two endpoints' heralding efficiencies times the bandwidth allocated to their link. it is measurable at the endpoints, and unlike brightness it composes, so two networks built on entirely different source technologies can be compared on it.
 
@@ -226,7 +226,7 @@ for scale on the key rates: an entanglement-based QKD system was recently [deplo
 - leveling an unbalanced network works, and about half of the fix came from spending idle spectrum. the other half cost roughly 40% of the network's total coincidence budget, which nobody prices.
 - what's missing: the composed 8-user-over-fiber-with-finite-key experiment, a real allocator instead of "a simple algorithm", propagation time equalization, a clock, and a figure of merit that is η² rather than brightness.
 
-what i keep coming back to is that this paper and [the Optica one]({% post_url 2026-08-30-Flex-grid-for-entanglement %}) each had the half the other lacked, four months apart, with this one citing that one and neither borrowing much. one had a switch worth programming and a source too narrow to program it with. this one had 60 nm of entanglement and stopped at "a simple algorithm". the interesting work of the following five years has been assembling one paper out of the two, and it is mostly done except for the part where somebody turns all 28 links on at once and reports what happens.
+what i keep coming back to is that this paper and [the Optica one]({% post_url 2026-04-04-Flex-grid-for-entanglement %}) each had the half the other lacked, four months apart, with this one citing that one and neither borrowing much. one had a switch worth programming and a source too narrow to program it with. this one had 60 nm of entanglement and stopped at "a simple algorithm". the interesting work of the following five years has been assembling one paper out of the two, and it is mostly done except for the part where somebody turns all 28 links on at once and reports what happens.
 
 {% raw %}<style>
 .qw{text-align:left;background:#191919;border:1px solid #333;border-radius:6px;padding:18px 18px 14px;margin:28px 0;font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:1.5;color:#e6e6e6;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
