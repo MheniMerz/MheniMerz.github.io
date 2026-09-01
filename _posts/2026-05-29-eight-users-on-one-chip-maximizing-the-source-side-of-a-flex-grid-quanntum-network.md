@@ -6,7 +6,7 @@ category: 'networking'
 tags: [ 'networking', 'fiber', 'quantum' ]
 ---
 
-[the last post]({% post_url 2026-08-30-Flex-grid-for-entanglement %}) was about the switch. one wavelength selective switch in the middle of a quantum network, replacing a tree of passive filters, so the operator can decide who gets how much entanglement by pushing a config instead of driving to the site.
+[the last post]({% post_url 2026-04-04-Flex-grid-for-entanglement %}) was about the switch. one wavelength selective switch in the middle of a quantum network, replacing a tree of passive filters, so the operator can decide who gets how much entanglement by pushing a config instead of driving to the site.
 
 that post skipped a question. the switch divides up a spectrum. where does the spectrum come from, and how much of it is there?
 
