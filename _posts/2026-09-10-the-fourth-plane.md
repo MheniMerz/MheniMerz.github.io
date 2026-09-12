@@ -90,7 +90,7 @@ that is the whole result. it is a feasibility paper and it says so: "this work d
 
 ## what i'd push on next
 
-so, my own paper. five things, roughly in order of how much i think they matter.
+so, my own paper. four things, roughly in order of how much i think they matter.
 
 **1. a measurement plane that does not measure itself.** the headline improvement is "hundreds of script lines to a short workflow specification," and that is not a measurement. it is the kind of claim the paper exists to make unnecessary. what is the end-to-end latency of one capability invocation. how long did the fringe sweep take, against how long the same sweep took by hand. what is the overhead of NATS plus JSON schema validation against a direct device call. those numbers are three afternoons of work with the system already running, and their absence is conspicuous in this particular paper in a way it would not be in somebody else's.
 
@@ -105,8 +105,6 @@ a capability descriptor is already 80% of that spec. it has a name, a parameter 
 that costs a registry and a versioning convention, both of which the paper explicitly does not have. it is a small amount of work with a much larger payoff than another supported instrument.
 
 **4. three nodes, because two is not a network.** two nodes is the smallest thing on which a joint measurement exists at all, and it does prove the point. but the coordination problems that motivated the whole design turn up at three: an entanglement swap at a middle node is a workflow where one participant's result gates what the other two do, and the coordinator has to carry a herald between them rather than a parameter. that is qualitatively harder than a sweep and it is the case the architecture claims to be for.
-
-<!-- **5. say what happens when a node goes away.** the lifecycle in the paper runs submitted, accepted, running, completed, interrupted. "interrupted" is doing a lot of work there. a fringe sweep is nineteen dependent steps across two buildings, and the failure question is not academic: on a week-long run like [the Bristol one]({% post_url 2026-09-10-fifteen-links-at-once %}), an SNSPD cryostat cycles on schedule and a fiber gets touched. what does a workflow do when a resource agent stops answering halfway through, and does the partial result survive with enough metadata to be worth keeping? the classical measurement platforms this borrows from all had to answer that, and it is usually the least glamorous and most-used part of the system. -->
 
 ## the short version
 
