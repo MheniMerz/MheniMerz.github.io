@@ -10,7 +10,7 @@ disclosure first, same as [the aerial fiber post]({% post_url 2026-07-20-holding
 
 the reason to write it up here is that this blog has spent two posts complaining about the thing it is about.
 
-[the quantum LAN post]({% post_url 2026-09-07-a-quantum-lan-on-deployed-fiber %}) ended by arguing that ebits per second deserves to be the metric of a distribution network and is losing, because nobody states an integration time, a basis set, or a position on accidental subtraction. [the flex grid post]({% post_url 2026-04-04-Flex-grid-for-entanglement %}) asked, twice now, for somebody to publish a reconfiguration time. and [the post on the Bristol q-ROADM]({% post_url 2026-09-10-fifteen-links-at-once %}) last week ran into the same wall from the other side: a week of per-link data on installed fiber, and the interesting time series is not in the paper.
+<!-- [the quantum LAN post]({% post_url 2026-09-07-a-quantum-lan-on-deployed-fiber %}) ended by arguing that ebits per second deserves to be the metric of a distribution network and is losing, because nobody states an integration time, a basis set, or a position on accidental subtraction. [the flex grid post]({% post_url 2026-04-04-Flex-grid-for-entanglement %}) asked, twice now, for somebody to publish a reconfiguration time. and [the post on the Bristol q-ROADM]({% post_url 2026-09-10-fifteen-links-at-once %}) last week ran into the same wall from the other side: a week of per-link data on installed fiber, and the interesting time series is not in the paper. -->
 
 those are all the same complaint. the measurements exist. what does not exist is a way to say what was measured, in a form somebody else can run.
 
